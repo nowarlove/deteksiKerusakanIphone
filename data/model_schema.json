@@ -1,26 +1,97 @@
 {
-  "version": "dataset-2026-09-05-wifi-curated",
-  "feature_order": ["Signal", "Baterai", "LCD", "Wifi", "Touchscreen", "Tegangan", "Kamera", "Konektor Cas", "Speaker", "Mikrofon", "Backdoor", "Housing", "Tombol"],
+  "version": "dataset-2026-09-10-13-35",
+  "feature_order": [
+    "Signal",
+    "Baterai",
+    "LCD",
+    "Wifi",
+    "Touchscreen",
+    "Tegangan",
+    "Kamera",
+    "Konektor Cas",
+    "Speaker",
+    "Mikrofon",
+    "Backdoor",
+    "Housing",
+    "Tombol"
+  ],
   "allowed_values": {
-    "Signal": ["Bar Rendah", "Hilang Total", "Normal"],
-    "Baterai": ["Daya Tahan Rendah/Gembung", "Normal"],
-    "LCD": ["Gelap", "Greenscreen", "Normal"],
-    "Wifi": ["Hilang Total/Tidak Dapat Diaktifkan", "Normal", "Sinyal Lemah/Tidak Stabil"],
-    "Touchscreen": ["Normal", "Tidak bisa disentuh"],
-    "Tegangan": ["0,0", "0,6", "0,8 - 2,2"],
-    "Kamera": ["Blank", "Normal"],
-    "Konektor Cas": ["Keluar masuk", "Normal", "Tidak Ngecas"],
-    "Speaker": ["Normal", "Rusak"],
-    "Mikrofon": ["Normal", "Tidak Berfungsi"],
-    "Backdoor": ["Normal", "Pecah/Retak"],
-    "Housing": ["Normal", "Pecah/Retak/Bengkok"],
-    "Tombol": ["Normal", "Tidak Berfungsi"]
+    "Signal": [
+      "Bar Rendah",
+      "Hilang Total",
+      "Normal"
+    ],
+    "Baterai": [
+      "Daya Tahan Rendah/Gembung",
+      "Normal"
+    ],
+    "LCD": [
+      "Gelap",
+      "Greenscreen",
+      "Normal"
+    ],
+    "Wifi": [
+      "Hilang Total/Tidak Dapat Diaktifkan",
+      "Normal",
+      "Sinyal Lemah/Tidak Stabil"
+    ],
+    "Touchscreen": [
+      "Normal",
+      "Tidak bisa disentuh"
+    ],
+    "Tegangan": [
+      "0,0",
+      "0,6",
+      "0,8 - 2,2"
+    ],
+    "Kamera": [
+      "Bergetar / OIS Tidak Stabil",
+      "Blank",
+      "Normal"
+    ],
+    "Konektor Cas": [
+      "Keluar masuk",
+      "Normal",
+      "Tidak Ngecas"
+    ],
+    "Speaker": [
+      "Normal",
+      "Rusak"
+    ],
+    "Mikrofon": [
+      "Normal",
+      "Tidak Berfungsi"
+    ],
+    "Backdoor": [
+      "Normal",
+      "Pecah/Retak"
+    ],
+    "Housing": [
+      "Normal",
+      "Pecah/Retak/Bengkok"
+    ],
+    "Tombol": [
+      "Normal",
+      "Tidak Berfungsi"
+    ]
   },
   "defaults": {
-    "Signal": "Normal", "Baterai": "Normal", "LCD": "Normal", "Wifi": "Normal",
-    "Touchscreen": "Normal", "Tegangan": "0,8 - 2,2", "Kamera": "Normal",
-    "Konektor Cas": "Normal", "Speaker": "Normal", "Mikrofon": "Normal",
-    "Backdoor": "Normal", "Housing": "Normal", "Tombol": "Normal"
+    "Signal": "Normal",
+    "Baterai": "Normal",
+    "LCD": "Normal",
+    "Wifi": "Normal",
+    "Touchscreen": "Normal",
+    "Tegangan": "0,8 - 2,2",
+    "Kamera": "Normal",
+    "Konektor Cas": "Normal",
+    "Speaker": "Normal",
+    "Mikrofon": "Normal",
+    "Backdoor": "Normal",
+    "Housing": "Normal",
+    "Tombol": "Normal"
   },
-  "dataset_size": {"train": 736, "test": 185}
+  "dataset_size": {
+    "train": 736,
+    "test": 185
+  }
 }

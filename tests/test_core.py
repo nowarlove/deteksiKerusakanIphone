@@ -46,9 +46,10 @@ class FeatureTests(unittest.TestCase):
         initial = {(r["symptom_col"], r["symptom_val"]) for r in INITIAL_BELIEF["rules"]}
         optimal = {(r["symptom_col"], r["symptom_val"]) for r in OPTIMAL_KNOWLEDGE_BASE["rules"]}
         self.assertEqual(initial, optimal)
-        self.assertEqual(len(optimal), 18)
+        self.assertEqual(len(optimal), 19)
         self.assertIn(("Wifi", "Sinyal Lemah/Tidak Stabil"), optimal)
         self.assertIn(("Wifi", "Hilang Total/Tidak Dapat Diaktifkan"), optimal)
+        self.assertIn(("Kamera", "Bergetar / OIS Tidak Stabil"), optimal)
 
     def test_qwen_context_uses_aligned_aggregate_schema(self):
         context = dataset_prompt_context()

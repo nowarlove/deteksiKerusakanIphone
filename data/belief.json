@@ -88,6 +88,13 @@
       ]
     },
     {
+      "symptom_col": "Kamera",
+      "symptom_val": "Bergetar / OIS Tidak Stabil",
+      "hypotheses": [
+        { "damage": "Kamera Rusak", "initial_belief": 0.85 }
+      ]
+    },
+    {
       "symptom_col": "Konektor Cas",
       "symptom_val": "Keluar masuk",
       "hypotheses": [

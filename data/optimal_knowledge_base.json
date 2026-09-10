@@ -23,11 +23,11 @@
       "hypotheses": [
         {
           "damage": "IC WTR Rusak",
-          "optimal_belief": 0.2325
+          "optimal_belief": 0.2285
         },
         {
           "damage": "Antena Signal Rusak",
-          "optimal_belief": 0.7175
+          "optimal_belief": 0.7215
         }
       ],
       "uncertainty_theta": 0.05
@@ -38,14 +38,14 @@
       "hypotheses": [
         {
           "damage": "Antena Signal Rusak",
-          "optimal_belief": 0.95
+          "optimal_belief": 0.0
         },
         {
           "damage": "IC WTR Rusak",
           "optimal_belief": 0.0
         }
       ],
-      "uncertainty_theta": 0.05
+      "uncertainty_theta": 1.0
     },
     {
       "symptom_col": "Baterai",
@@ -83,14 +83,14 @@
       "hypotheses": [
         {
           "damage": "LCD Rusak",
-          "optimal_belief": 0.8628
+          "optimal_belief": 0.8656
         },
         {
           "damage": "IC Power Rusak",
           "optimal_belief": 0.0
         }
       ],
-      "uncertainty_theta": 0.1372
+      "uncertainty_theta": 0.1344
     },
     {
       "symptom_col": "Wifi",
@@ -113,14 +113,14 @@
       "hypotheses": [
         {
           "damage": "IC WTR Rusak",
-          "optimal_belief": 0.7682
+          "optimal_belief": 0.5166
         },
         {
           "damage": "Antena Wifi Rusak",
-          "optimal_belief": 0.0
+          "optimal_belief": 0.2935
         }
       ],
-      "uncertainty_theta": 0.2318
+      "uncertainty_theta": 0.1899
     },
     {
       "symptom_col": "Touchscreen",
@@ -139,14 +139,14 @@
       "hypotheses": [
         {
           "damage": "IC Power Rusak",
-          "optimal_belief": 0.7155
+          "optimal_belief": 0.7154
         },
         {
           "damage": "Baterai Rusak",
-          "optimal_belief": 0.1295
+          "optimal_belief": 0.1328
         }
       ],
-      "uncertainty_theta": 0.1551
+      "uncertainty_theta": 0.1518
     },
     {
       "symptom_col": "Tegangan",
@@ -154,11 +154,11 @@
       "hypotheses": [
         {
           "damage": "IC Power Rusak",
-          "optimal_belief": 0.8212
+          "optimal_belief": 0.8264
         },
         {
           "damage": "Baterai Rusak",
-          "optimal_belief": 0.1288
+          "optimal_belief": 0.1236
         },
         {
           "damage": "IC Cas Rusak",
@@ -179,15 +179,26 @@
       "uncertainty_theta": 0.05
     },
     {
+      "symptom_col": "Kamera",
+      "symptom_val": "Bergetar / OIS Tidak Stabil",
+      "hypotheses": [
+        {
+          "damage": "Kamera Rusak",
+          "optimal_belief": 0.95
+        }
+      ],
+      "uncertainty_theta": 0.05
+    },
+    {
       "symptom_col": "Konektor Cas",
       "symptom_val": "Keluar masuk",
       "hypotheses": [
         {
           "damage": "Port Pengisian Rusak",
-          "optimal_belief": 0.7989
+          "optimal_belief": 0.7966
         }
       ],
-      "uncertainty_theta": 0.2011
+      "uncertainty_theta": 0.2034
     },
     {
       "symptom_col": "Konektor Cas",
@@ -210,11 +221,11 @@
       "hypotheses": [
         {
           "damage": "Speaker Rusak",
-          "optimal_belief": 0.95
+          "optimal_belief": 0.8952
         },
         {
           "damage": "IC Audio Rusak",
-          "optimal_belief": 0.0
+          "optimal_belief": 0.0548
         }
       ],
       "uncertainty_theta": 0.05
@@ -225,11 +236,11 @@
       "hypotheses": [
         {
           "damage": "Mikrofon Rusak",
-          "optimal_belief": 0.8437
+          "optimal_belief": 0.7782
         },
         {
           "damage": "IC Audio Rusak",
-          "optimal_belief": 0.1063
+          "optimal_belief": 0.1718
         }
       ],
       "uncertainty_theta": 0.05
@@ -240,10 +251,10 @@
       "hypotheses": [
         {
           "damage": "Backdoor Rusak",
-          "optimal_belief": 0.95
+          "optimal_belief": 0.9067
         }
       ],
-      "uncertainty_theta": 0.05
+      "uncertainty_theta": 0.0933
     },
     {
       "symptom_col": "Housing",
@@ -262,10 +273,10 @@
       "hypotheses": [
         {
           "damage": "Tombol Rusak",
-          "optimal_belief": 0.7637
+          "optimal_belief": 0.7628
         }
       ],
-      "uncertainty_theta": 0.2363
+      "uncertainty_theta": 0.2372
     }
   ]
 }
