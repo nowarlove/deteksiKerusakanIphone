@@ -1,0 +1,1 @@
+{% extends 'admin/base.html' %}{% block title %}Log Job{% endblock %}{% block heading %}Log Training #{{ job.id }}{% endblock %}{% block content %}<div class="card"><p>Status: <span class="badge {{ job.status }}">{{ job.status }}</span></p><pre>{{ content }}</pre></div>{% endblock %}

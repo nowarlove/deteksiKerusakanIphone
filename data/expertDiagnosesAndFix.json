@@ -1,0 +1,1004 @@
+{
+  "_metadata": {
+    "nama_database": "Expert Diagnoses & Fix - NST Phone Repair",
+    "deskripsi": "Basis pengetahuan pakar untuk sistem diagnosis kerusakan iPhone berbasis Dempster-Shafer. Database ini bersifat independen dan tidak bergantung pada API eksternal manapun. Gemini API hanya digunakan sebagai modul NLP untuk mengekstrak fitur gejala dari teks keluhan pelanggan, BUKAN sebagai sumber pengetahuan diagnosis.",
+    "versi": "1.0.0",
+    "total_kelas": 14,
+    "sumber_pengetahuan": [
+      "Pengalaman teknisi NST Phone Repair",
+      "iFixit iPhone Repair Guides",
+      "Apple Service Manual (ASM)",
+      "Louis Rossmann Board Repair Notes",
+      "Data historis perbaikan toko (736 kasus)"
+    ],
+    "catatan_skripsi": "Database ini merupakan komponen Expert Knowledge Layer yang terpisah dari modul inferensi DS-PSO. Fungsinya adalah menyediakan informasi perbaikan klinis terstruktur setelah sistem menentukan diagnosis. Gemini API hanya berperan sebagai modul NLP preprocessing."
+  },
+  "dataset_curation": {
+    "version": "wifi-curation-2026-09-05",
+    "purpose": "Koreksi label pakar eksplisit untuk kasus WiFi yang memiliki bukti gejala cukup. Bagian ini hanya dipakai oleh preprocessing dan bukan mapper NLP.",
+    "wifi_reviewed_cases": [
+      {
+        "phone_type": "IPHONE XR",
+        "raw_text": "wifi lemah sering main sampai panas berlebih",
+        "wifi_value": "Sinyal Lemah/Tidak Stabil",
+        "damage_label": "Antena Wifi Rusak",
+        "rationale": "WiFi lemah adalah indikasi jalur atau antena WiFi, bukan kehilangan fungsi wireless total."
+      },
+      {
+        "phone_type": "IPHONE XS",
+        "raw_text": "wifi lemah pernah ganti backdoor",
+        "wifi_value": "Sinyal Lemah/Tidak Stabil",
+        "damage_label": "Antena Wifi Rusak",
+        "rationale": "Keluhan WiFi lemah setelah pekerjaan backdoor ditetapkan sebagai kasus antena WiFi."
+      },
+      {
+        "phone_type": "IPHONEE 11 PROMAX",
+        "raw_text": "wifi tidak bisa di aktifkan jatuh keras",
+        "wifi_value": "Hilang Total/Tidak Dapat Diaktifkan",
+        "damage_label": "IC WTR Rusak",
+        "rationale": "WiFi tidak dapat diaktifkan setelah benturan ditetapkan sebagai indikasi IC WTR yang perlu pemeriksaan board-level."
+      }
+    ]
+  },
+  "kerusakan": {
+    "Antena Signal Rusak": {
+      "kode": "ANT-001",
+      "nama_lengkap": "Kerusakan Antena Jaringan Seluler / WiFi",
+      "kategori": "Komponen RF (Radio Frequency)",
+      "deskripsi_umum": "Antena pada iPhone berfungsi menerima dan memancarkan sinyal seluler (GSM/LTE/5G) maupun WiFi. Kerusakan antena menyebabkan perangkat tidak dapat terhubung ke jaringan atau sinyal sangat lemah.",
+      "gejala_utama": [
+        "Sinyal bar sangat rendah (0-1 bar) meskipun berada di area sinyal kuat",
+        "Sinyal hilang timbul (intermittent) atau putus-putus",
+        "Tidak bisa melakukan atau menerima panggilan",
+        "WiFi tidak terdeteksi atau sering terputus",
+        "Status No Service atau Searching terus-menerus"
+      ],
+      "gejala_pendukung": [
+        "Perangkat panas di area sudut bawah (dekat antena)",
+        "Data seluler tidak berfungsi meski sinyal ada",
+        "Roaming tidak bekerja",
+        "Sinyal membaik saat SIM card dilepas pasang"
+      ],
+      "penyebab_umum": [
+        "Konektor antena lepas atau longgar dari motherboard",
+        "Kabel fleksibel antena putus atau sobek (sering akibat benturan/terjatuh)",
+        "Korosi pada konektor antena akibat masuk air",
+        "Antena fisik pecah atau bengkok",
+        "Penggantian backdoor menggunakan komponen non-original yang tidak memiliki antena terintegrasi"
+      ],
+      "komponen_terdampak": [
+        "Kabel fleksibel antena seluler",
+        "Antena WiFi (terintegrasi di backdoor pada beberapa model)",
+        "Konektor antena pada motherboard",
+        "IC WTR (Wireless Transceiver) sebagai komponen terkait"
+      ],
+      "langkah_diagnosis": [
+        "1. Cek sinyal di Settings > General > About > lihat status carrier",
+        "2. Masukkan SIM card baru untuk eliminasi SIM rusak",
+        "3. Aktifkan Airplane Mode lalu nonaktifkan, observasi perubahan sinyal",
+        "4. Buka casing, periksa konektor antena secara visual (ada 2-4 konektor tergantung model)",
+        "5. Lepas dan pasang kembali semua konektor antena dengan hati-hati",
+        "6. Ukur resistansi konektor antena menggunakan multimeter (harusnya <5 Ohm)",
+        "7. Cek kabel fleksibel antena dari sobek atau putus secara visual"
+      ],
+      "prosedur_perbaikan": [
+        "Pasang ulang konektor antena yang longgar",
+        "Ganti kabel fleksibel antena jika putus atau sobek",
+        "Bersihkan konektor dengan isopropyl alcohol 99% jika berkarat",
+        "Pastikan backdoor original (antena terintegrasi di backdoor pada iPhone generasi tertentu)",
+        "Jika konektor di board rusak, lakukan re-solder atau ganti flex antena"
+      ],
+      "estimasi_biaya": {
+        "rentang": "Rp 50.000 - Rp 350.000",
+        "rincian": {
+          "Pasang ulang konektor (jasa)": "Rp 50.000 - Rp 100.000",
+          "Kabel fleksibel antena": "Rp 75.000 - Rp 200.000",
+          "Backdoor original (jika antena terintegrasi)": "Rp 150.000 - Rp 350.000"
+        }
+      },
+      "tingkat_kesulitan": "Menengah",
+      "waktu_perbaikan": "30 menit - 2 jam",
+      "model_rentan": [
+        "iPhone 7",
+        "iPhone 8",
+        "iPhone X",
+        "iPhone 11",
+        "iPhone 12"
+      ],
+      "catatan_teknis": "Pada iPhone generasi 12 ke atas, antena WiFi dan 5G terintegrasi dalam sistem mmWave yang kompleks. Mengganti backdoor dengan komponen pihak ketiga seringkali menghilangkan kualitas sinyal optimal."
+    },
+    "Antena Wifi Rusak": {
+      "kode": "WFI-001",
+      "nama_lengkap": "Kerusakan Antena WiFi / Bluetooth",
+      "kategori": "Komponen RF (Radio Frequency)",
+      "deskripsi_umum": "Antena WiFi pada iPhone mengelola penerimaan dan pemancaran sinyal nirkabel WiFi serta Bluetooth. Kerusakan pada antena ini menyebabkan sinyal WiFi tidak terdeteksi, lemah, atau sering terputus-putus.",
+      "gejala_utama": [
+        "Pilihan WiFi di Settings berwarna abu-abu (greyed out) atau tidak bisa diaktifkan",
+        "Sinyal WiFi sangat lemah (hanya terdeteksi jika dekat dengan router)",
+        "Koneksi WiFi sering terputus secara acak",
+        "Bluetooth tidak mendeteksi perangkat sekitar atau sering gagal terhubung"
+      ],
+      "gejala_pendukung": [
+        "Fitur AirDrop tidak berfungsi",
+        "Peta lokasi / GPS tidak akurat (sering berbagi chip/antena)",
+        "Kecepatan transfer data nirkabel sangat lambat"
+      ],
+      "penyebab_umum": [
+        "Kabel fleksibel antena WiFi sobek atau putus akibat benturan keras",
+        "Konektor antena WiFi terlepas atau longgar dari motherboard",
+        "Korosi akibat masuknya cairan pada celah atas iPhone",
+        "Interferensi fisik dari frame/housing yang bengkok"
+      ],
+      "komponen_terdampak": [
+        "Kabel fleksibel antena WiFi/Bluetooth",
+        "Konektor antena pada motherboard",
+        "IC WiFi (sebagai komponen terkait)"
+      ],
+      "langkah_diagnosis": [
+        "1. Buka Settings > Wi-Fi, periksa toggle aktif atau abu-abu",
+        "2. Cek apakah Bluetooth bisa diaktifkan",
+        "3. Dekatkan iPhone ke router - jika sinyal terdeteksi hanya dalam jarak dekat, antena rusak",
+        "4. Buka casing, periksa kabel fleksibel dan konektor antena WiFi secara visual",
+        "5. Ukur resistansi antena menggunakan multimeter"
+      ],
+      "prosedur_perbaikan": [
+        "Pasang kembali konektor antena WiFi yang longgar atau lepas",
+        "Ganti modul kabel fleksibel antena WiFi yang sobek atau rusak",
+        "Bersihkan konektor dari korosi menggunakan isopropyl alcohol 99%",
+        "Jika masalah tetap ada setelah ganti antena, lakukan pemeriksaan pada IC WiFi"
+      ],
+      "estimasi_biaya": {
+        "rentang": "Rp 150.000 - Rp 450.000",
+        "rincian": {
+          "Ganti kabel fleksibel antena WiFi": "Rp 150.000 - Rp 300.000",
+          "Perbaikan konektor board (jasa)": "Rp 250.000 - Rp 450.000"
+        }
+      },
+      "tingkat_kesulitan": "Menengah",
+      "waktu_perbaikan": "30 - 90 menit",
+      "model_rentan": [
+        "iPhone 7",
+        "iPhone 8",
+        "iPhone X",
+        "iPhone 11",
+        "iPhone 12"
+      ],
+      "catatan_teknis": "Antena WiFi seringkali berada di area atas motherboard. Hati-hati saat membuka bagian atas layar agar kabel fleksibel kamera depan / Face ID tidak ikut sobek."
+    },
+    "Backdoor Rusak": {
+      "kode": "BKD-001",
+      "nama_lengkap": "Kerusakan Panel Belakang (Backdoor / Rear Glass)",
+      "kategori": "Komponen Fisik / Casing",
+      "deskripsi_umum": "Backdoor adalah panel kaca belakang iPhone. Kerusakan biasanya berupa retak atau pecah akibat benturan. Selain estetika, backdoor rusak dapat memengaruhi integritas struktur perangkat dan kinerja antena.",
+      "gejala_utama": [
+        "Kaca belakang retak, pecah, atau terkelupas",
+        "Ada serpihan kaca yang tajam di bagian belakang",
+        "Casing belakang bengkok atau terdeformasi",
+        "Panel belakang terlepas atau longgar dari frame"
+      ],
+      "gejala_pendukung": [
+        "Sinyal menurun (jika antena terintegrasi di backdoor)",
+        "Pengisian daya wireless (MagSafe/Qi) tidak berfungsi optimal",
+        "Kamera berbaret atau buram akibat kaca kamera pecah",
+        "Debu dan air masuk ke dalam perangkat"
+      ],
+      "penyebab_umum": [
+        "Perangkat terjatuh di permukaan keras",
+        "Tekanan mekanik berlebihan pada panel belakang",
+        "Siklus panas-dingin ekstrem (thermal stress)",
+        "Usia material kaca yang sudah menurun"
+      ],
+      "komponen_terdampak": [
+        "Panel kaca belakang",
+        "Frame/chassis aluminium (bisa bengkok bersamaan)",
+        "Konektor antena (jika tertarik saat membuka)",
+        "Modul kamera (risiko terkena serpihan kaca)"
+      ],
+      "langkah_diagnosis": [
+        "1. Inspeksi visual secara menyeluruh - catat semua retakan dan pecahan",
+        "2. Periksa apakah frame/chassis ikut bengkok",
+        "3. Uji fungsionalitas wireless charging jika berlaku",
+        "4. Setelah dibuka, periksa konektor antena tidak ikut rusak"
+      ],
+      "prosedur_perbaikan": [
+        "Metode 1 (Laser Separator): Gunakan mesin laser untuk memisahkan kaca belakang dari frame tanpa merusak komponen internal - metode terbaik",
+        "Metode 2 (Heat Gun + Suction): Panaskan tepian backdoor, gunakan suction cup untuk mengangkat perlahan",
+        "Pasang backdoor baru menggunakan adhesive double-tape khusus",
+        "Pastikan semua konektor antena terpasang kembali dengan benar",
+        "Uji waterproofing jika model memiliki rating IP"
+      ],
+      "estimasi_biaya": {
+        "rentang": "Rp 150.000 - Rp 800.000",
+        "rincian": {
+          "iPhone 8 / SE 2020": "Rp 150.000 - Rp 250.000",
+          "iPhone X / XS": "Rp 250.000 - Rp 450.000",
+          "iPhone 11 Pro / 12 / 13": "Rp 350.000 - Rp 600.000",
+          "iPhone 14 / 15 Series": "Rp 500.000 - Rp 800.000"
+        }
+      },
+      "tingkat_kesulitan": "Menengah-Tinggi (memerlukan alat khusus laser/heat)",
+      "waktu_perbaikan": "1 - 3 jam",
+      "model_rentan": [
+        "iPhone 8",
+        "iPhone X",
+        "iPhone 11",
+        "iPhone 12",
+        "iPhone 13",
+        "iPhone 14",
+        "iPhone 15"
+      ],
+      "catatan_teknis": "Mulai iPhone 12, Apple menggunakan kaca Ceramic Shield yang lebih sulit dilepas tanpa mesin laser. Perbaikan tanpa laser berisiko merusak modul kamera dan baterai."
+    },
+    "Baterai Rusak": {
+      "kode": "BAT-001",
+      "nama_lengkap": "Kerusakan / Degradasi Baterai Lithium-Ion",
+      "kategori": "Komponen Daya",
+      "deskripsi_umum": "Baterai iPhone menggunakan sel Lithium-Ion yang memiliki siklus hidup terbatas sekitar 500 siklus penuh. Kerusakan bisa berupa degradasi kapasitas, baterai gembung (swollen), atau sel yang bocor.",
+      "gejala_utama": [
+        "Baterai cepat habis tidak tahan seharian dengan pemakaian normal",
+        "Persentase baterai loncat-loncat tidak konsisten (misal 50% langsung mati)",
+        "iPhone mati mendadak saat baterai masih menunjukkan 10-30%",
+        "Baterai terasa menggembung / panel belakang terangkat",
+        "Battery Health di bawah 80% (Settings > Battery > Battery Health)"
+      ],
+      "gejala_pendukung": [
+        "Performa iPhone melambat (Apple Throttling akibat baterai lemah)",
+        "iPhone panas berlebih saat pengisian atau penggunaan normal",
+        "Waktu pengisian daya menjadi lebih lama dari biasanya",
+        "iPhone restart sendiri secara acak"
+      ],
+      "penyebab_umum": [
+        "Usia baterai sudah melewati 500 siklus pengisian",
+        "Kebiasaan mengisi daya semalaman secara rutin (overcharging jangka panjang)",
+        "Sering mengisi daya dari 0% (deep discharge)",
+        "Penggunaan charger non-original dengan output daya tidak stabil",
+        "Paparan suhu ekstrem lebih dari 35 derajat Celcius dalam waktu lama",
+        "Masuk air yang merusak sel baterai"
+      ],
+      "komponen_terdampak": [
+        "Sel baterai Lithium-Ion",
+        "IC pengisian BMS (Battery Management System) dalam baterai",
+        "Konektor baterai pada motherboard",
+        "Panel belakang (risiko terangkat jika baterai gembung)"
+      ],
+      "langkah_diagnosis": [
+        "1. Buka Settings > Battery > Battery Health & Charging > catat persentase",
+        "2. Jika Battery Health kurang dari 80%, baterai perlu diganti",
+        "3. Jalankan iPhone Diagnostics untuk data siklus baterai",
+        "4. Periksa fisik baterai - apakah panel belakang terangkat (tanda baterai gembung)",
+        "5. Ukur tegangan baterai dengan multimeter: normal 3.7V-4.2V, di bawah 3.0V kritis"
+      ],
+      "prosedur_perbaikan": [
+        "Matikan iPhone sebelum membuka",
+        "Buka casing belakang menggunakan alat yang sesuai model",
+        "Lepas konektor baterai dari motherboard TERLEBIH DAHULU",
+        "Lepas baterai lama menggunakan pull-tab adhesive (tarik perlahan 45 derajat)",
+        "Jika adhesive sobek, gunakan isopropyl alcohol 99% untuk melunakkan",
+        "JANGAN menekuk atau menusuk baterai - risiko kebakaran",
+        "Pasang baterai baru, hubungkan konektor, dan boot iPhone",
+        "Kalibrasi baterai: isi hingga 100%, gunakan hingga mati, isi kembali ke 100%"
+      ],
+      "estimasi_biaya": {
+        "rentang": "Rp 250.000 - Rp 750.000",
+        "rincian": {
+          "iPhone 7 / 8": "Rp 250.000 - Rp 350.000",
+          "iPhone X / XS / XR": "Rp 300.000 - Rp 450.000",
+          "iPhone 11 Series": "Rp 350.000 - Rp 500.000",
+          "iPhone 12 / 13 Series": "Rp 400.000 - Rp 600.000",
+          "iPhone 14 / 15 Series": "Rp 550.000 - Rp 750.000"
+        }
+      },
+      "tingkat_kesulitan": "Mudah-Menengah",
+      "waktu_perbaikan": "30 - 60 menit",
+      "model_rentan": [
+        "iPhone 6s",
+        "iPhone 7",
+        "iPhone 8",
+        "iPhone X",
+        "iPhone 11"
+      ],
+      "catatan_teknis": "Mulai iPhone 15, Apple mengimplementasikan Activation Lock pada baterai. Penggantian baterai non-Apple akan memunculkan peringatan di Battery Health. Gunakan baterai original atau bersertifikat untuk menghindari ini."
+    },
+    "Housing Rusak": {
+      "kode": "HSG-001",
+      "nama_lengkap": "Kerusakan Rangka / Frame Perangkat (Housing)",
+      "kategori": "Komponen Fisik / Struktur",
+      "deskripsi_umum": "Housing atau frame adalah rangka aluminium/titanium yang menjadi tulang punggung struktural iPhone. Kerusakan berupa bengkok, retak, atau deformasi yang dapat memengaruhi integritas seluruh perangkat.",
+      "gejala_utama": [
+        "Frame/rangka terlihat bengkok atau melengkung",
+        "Sudut perangkat penyok atau retak",
+        "LCD/layar tidak menempel sempurna akibat frame bengkok",
+        "Tombol volume atau power susah ditekan karena frame terdeformasi",
+        "Celah tidak rata antara layar dan frame"
+      ],
+      "gejala_pendukung": [
+        "iPhone tidak bisa tertutup sempurna setelah dibuka",
+        "Speaker atau mikrofon muffled akibat pergeseran komponen",
+        "Touch screen tidak responsif di area tertentu akibat tekanan frame"
+      ],
+      "penyebab_umum": [
+        "Benturan keras atau terjatuh dari ketinggian",
+        "Tertindih benda berat",
+        "Dimasukkan ke saku celana ketat (Bendgate phenomenon - iPhone 6/6 Plus)",
+        "Kecelakaan kendaraan atau tekanan ekstrim"
+      ],
+      "komponen_terdampak": [
+        "Frame aluminium/titanium",
+        "Tombol-tombol samping (volume, power, mute)",
+        "Slot SIM card",
+        "Komponen internal yang terkena tekanan (baterai, LCD)"
+      ],
+      "langkah_diagnosis": [
+        "1. Letakkan iPhone di permukaan datar - cek apakah ada bagian yang tidak rata (goyang)",
+        "2. Inspeksi visual semua sudut dan sisi frame",
+        "3. Cek apakah layar masih terpasang sempurna di semua sisi",
+        "4. Uji semua tombol fisik - pastikan masih berfungsi",
+        "5. Buka perangkat, cek apakah ada komponen internal yang tergeser"
+      ],
+      "prosedur_perbaikan": [
+        "Bengkok ringan: Gunakan frame straightener / press kit untuk meluruskan frame secara perlahan",
+        "Penyok lokal: Gunakan micro-spatula untuk mendorong bagian yang penyok dari dalam",
+        "Kerusakan parah: Ganti frame secara keseluruhan (memindahkan semua komponen)",
+        "Pastikan semua gasket dan seal terpasang kembali untuk waterproofing"
+      ],
+      "estimasi_biaya": {
+        "rentang": "Rp 200.000 - Rp 1.500.000",
+        "rincian": {
+          "Perbaikan bengkok ringan (jasa)": "Rp 200.000 - Rp 400.000",
+          "Ganti frame iPhone 8/SE": "Rp 400.000 - Rp 700.000",
+          "Ganti frame iPhone X-12": "Rp 700.000 - Rp 1.200.000",
+          "Ganti frame iPhone 13-15 (titanium)": "Rp 1.000.000 - Rp 1.500.000"
+        }
+      },
+      "tingkat_kesulitan": "Tinggi",
+      "waktu_perbaikan": "2 - 6 jam",
+      "model_rentan": [
+        "iPhone 6 Plus",
+        "iPhone 6s Plus",
+        "iPhone 12 mini"
+      ],
+      "catatan_teknis": "Penggantian frame lengkap memerlukan pemindahan SEMUA komponen internal termasuk motherboard, baterai, LCD, dan semua kabel fleksibel. Risiko kerusakan komponen sangat tinggi. Disarankan hanya untuk teknisi berpengalaman."
+    },
+    "IC Audio Rusak": {
+      "kode": "ICA-001",
+      "nama_lengkap": "Kerusakan IC Audio (Audio Codec Chip)",
+      "kategori": "Komponen IC / Chip Motherboard",
+      "deskripsi_umum": "IC Audio (Audio Codec) adalah chip pada motherboard yang mengelola semua fungsi audio iPhone: speaker, mikrofon, earpiece, dan output headphone. Kerusakan IC ini menyebabkan SEMUA fungsi audio terganggu sekaligus.",
+      "gejala_utama": [
+        "Speaker dan mikrofon mati bersamaan",
+        "Earpiece (speaker telepon atas) tidak berbunyi saat panggilan",
+        "Tidak ada suara sama sekali dari perangkat",
+        "Rekaman suara menghasilkan file bisu / tanpa suara",
+        "Headphone tidak terdeteksi atau tidak keluar suara"
+      ],
+      "gejala_pendukung": [
+        "Volume bar muncul tapi tidak ada suara",
+        "Siri tidak merespons perintah suara",
+        "Asisten suara tidak bisa mendengar input",
+        "Loop restart saat buka aplikasi kamera atau rekam",
+        "Error This accessory may not be supported saat hubungkan audio"
+      ],
+      "penyebab_umum": [
+        "Masuk air atau kelembapan tinggi yang merusak chip",
+        "Benturan keras yang menyebabkan solder ball IC Audio retak (micro crack)",
+        "Panas berlebih dalam jangka panjang",
+        "Arus listrik tidak stabil dari charger non-original",
+        "Komplikasi perbaikan sebelumnya (short circuit tidak sengaja)"
+      ],
+      "komponen_terdampak": [
+        "IC Audio Codec (chip pada motherboard)",
+        "Jalur solder IC Audio ke motherboard",
+        "Speaker bawah dan earpiece",
+        "Mikrofon utama dan sekunder",
+        "Konektor headphone (model lama)"
+      ],
+      "langkah_diagnosis": [
+        "1. Uji speaker: Settings > Sounds & Haptics > putar ringtone",
+        "2. Uji mikrofon: Buka Voice Memos > rekam > putar kembali",
+        "3. Uji earpiece: Lakukan panggilan telepon",
+        "4. Uji headphone jack / Lightning audio adapter",
+        "5. Jika SEMUA fungsi audio mati - indikasi kuat IC Audio rusak",
+        "6. Periksa di bawah mikroskop: cek kondisi IC Audio di board",
+        "7. Ukur tegangan pada pin IC Audio menggunakan multimeter/probe"
+      ],
+      "prosedur_perbaikan": [
+        "DIAGNOSIS AWAL: Pastikan speaker dan mikrofon fisik tidak rusak terlebih dahulu",
+        "Bersihkan area IC Audio dengan isopropyl alcohol - bisa membantu jika penyebabnya korosi ringan",
+        "Re-ball / Re-solder IC Audio menggunakan hot air station dan BGA station",
+        "Jika IC rusak permanen: ganti IC Audio (memerlukan keahlian micro-soldering BGA)",
+        "Uji semua fungsi audio setelah rework"
+      ],
+      "estimasi_biaya": {
+        "rentang": "Rp 300.000 - Rp 800.000",
+        "rincian": {
+          "Re-solder / Re-ball IC Audio (jasa)": "Rp 300.000 - Rp 500.000",
+          "Ganti IC Audio baru (komponen + jasa)": "Rp 500.000 - Rp 800.000"
+        }
+      },
+      "tingkat_kesulitan": "Sangat Tinggi (memerlukan micro-soldering BGA)",
+      "waktu_perbaikan": "2 - 5 jam",
+      "model_rentan": [
+        "iPhone 7",
+        "iPhone 7 Plus",
+        "iPhone 8"
+      ],
+      "catatan_teknis": "iPhone 7 dan 7 Plus sangat terkenal dengan masalah IC Audio (Touch Disease Audio variant). Gejalanya khas: semua audio mati, sering bersamaan dengan masalah loop setelah update iOS. IC Audio pada model ini sangat rentan terhadap tekanan mekanik karena posisinya di board."
+    },
+    "IC Cas Rusak": {
+      "kode": "ICC-001",
+      "nama_lengkap": "Kerusakan IC Pengisian Daya (Charging IC / Tristar / Hydra)",
+      "kategori": "Komponen IC / Chip Motherboard",
+      "deskripsi_umum": "IC Cas (disebut Tristar pada iPhone lama, Hydra pada yang baru) adalah chip yang mengontrol proses pengisian daya. Chip ini melindungi motherboard dari tegangan berlebih dan mengatur komunikasi antara charger dan iPhone.",
+      "gejala_utama": [
+        "iPhone tidak mau mengisi daya sama sekali meskipun kabel dan charger normal",
+        "Persentase baterai tidak berubah saat dicharge",
+        "iPhone hanya mengisi dengan charger tertentu saja",
+        "Muncul peringatan Charging Not Supported atau This cable or accessory is not certified",
+        "iPhone mati dan tidak bisa dinyalakan meski sudah dicharge lama"
+      ],
+      "gejala_pendukung": [
+        "iPhone panas berlebih saat dihubungkan ke charger",
+        "Pengisian sangat lambat kurang dari 5% per jam",
+        "iTunes/Finder tidak mendeteksi iPhone saat dihubungkan ke komputer",
+        "Mode Recovery atau DFU tidak bisa diakses"
+      ],
+      "penyebab_umum": [
+        "Penggunaan charger/kabel palsu yang merusak chip secara bertahap",
+        "Masuk air atau lembap pada port Lightning/USB-C",
+        "Penancapan kabel charger yang kasar atau sudut miring",
+        "Tegangan listrik tidak stabil (lonjakan arus)",
+        "Usia komponen yang sudah tua"
+      ],
+      "komponen_terdampak": [
+        "IC Tristar/Hydra (U2 pada schematic) di motherboard",
+        "Konektor Lightning/USB-C (port pengisian)",
+        "IC Power (PMIC) sebagai komponen terkait",
+        "Baterai (risiko tidak terisi sama sekali)"
+      ],
+      "langkah_diagnosis": [
+        "1. Coba dengan kabel dan charger Apple original yang diketahui normal",
+        "2. Bersihkan port Lightning/USB-C dari debu/kotoran",
+        "3. Coba hubungkan ke komputer - apakah terdeteksi di iTunes/Finder?",
+        "4. Ukur arus pengisian menggunakan USB ammeter - normal 0.5A-2A",
+        "5. Cek tegangan pada konektor baterai: normal 3.7V-4.35V saat charging",
+        "6. Periksa IC Tristar (U2) di board dengan mikroskop - cek tanda korosi/terbakar"
+      ],
+      "prosedur_perbaikan": [
+        "Bersihkan port Lightning dengan sikat halus dan isopropyl alcohol",
+        "Re-ball atau re-solder IC Tristar/Hydra jika ada masalah koneksi solder",
+        "Ganti IC Tristar/Hydra dengan yang baru (memerlukan micro-soldering)",
+        "Periksa dan perbaiki jalur pada PCB jika ada yang terbakar"
+      ],
+      "estimasi_biaya": {
+        "rentang": "Rp 250.000 - Rp 700.000",
+        "rincian": {
+          "Re-solder IC Cas (jasa)": "Rp 250.000 - Rp 400.000",
+          "Ganti IC Tristar/Hydra (komponen + jasa)": "Rp 400.000 - Rp 700.000"
+        }
+      },
+      "tingkat_kesulitan": "Tinggi (micro-soldering diperlukan)",
+      "waktu_perbaikan": "1 - 4 jam",
+      "model_rentan": [
+        "iPhone 6",
+        "iPhone 6s",
+        "iPhone 7",
+        "iPhone X"
+      ],
+      "catatan_teknis": "IC Tristar (U2 chip) adalah salah satu komponen yang paling sering mati akibat penggunaan charger non-original. Apple mengganti desain dengan chip Hydra mulai iPhone 8 yang lebih tahan, namun tetap rentan terhadap air."
+    },
+    "IC Power Rusak": {
+      "kode": "ICP-001",
+      "nama_lengkap": "Kerusakan IC Power Management (PMIC - Power Management Integrated Circuit)",
+      "kategori": "Komponen IC / Chip Motherboard",
+      "deskripsi_umum": "PMIC adalah chip paling vital pada motherboard iPhone. Chip ini mendistribusikan daya ke SEMUA komponen iPhone (CPU, RAM, GPU, sensor, dll). Kerusakan PMIC menyebabkan iPhone mati total atau tidak bisa menyala.",
+      "gejala_utama": [
+        "iPhone mati total - tidak bisa dinyalakan sama sekali",
+        "Layar gelap total meskipun sudah dicharge lama",
+        "Muncul logo Apple lalu langsung mati (boot loop)",
+        "Tegangan pada konektor baterai di bawah normal (kurang dari 0.6V)",
+        "Arus konsumsi 0 mA atau sangat tinggi (short circuit) saat diukur"
+      ],
+      "gejala_pendukung": [
+        "iPhone sebelumnya sangat panas sebelum mati total",
+        "Riwayat terkena air atau jatuh keras",
+        "iPhone tidak terdeteksi di iTunes/Finder sama sekali",
+        "Tidak ada respons apapun saat tombol power + volume ditekan"
+      ],
+      "penyebab_umum": [
+        "Masuk air - korosi pada PMIC adalah penyebab utama mati total akibat air",
+        "Benturan keras yang menyebabkan micro-crack pada solder PMIC",
+        "Short circuit dari komponen lain yang merusak PMIC",
+        "Lonjakan tegangan dari charger tidak stabil",
+        "Perbaikan sebelumnya yang tidak hati-hati"
+      ],
+      "komponen_terdampak": [
+        "PMIC chip pada motherboard",
+        "Semua komponen yang bergantung pada distribusi daya PMIC",
+        "CPU/GPU (APU) dalam satu chip Apple Silicon",
+        "RAM dan storage internal"
+      ],
+      "langkah_diagnosis": [
+        "1. Hubungkan ke charger original - amati apakah ada respons apapun",
+        "2. Ukur arus dengan DC power supply: atur 4.2V, amati angka arus",
+        "   - 0 mA: kemungkinan PMIC atau IC Power mati",
+        "   - lebih dari 2A langsung tinggi: kemungkinan short circuit",
+        "3. Cek tegangan pada titik test di board menggunakan schematic",
+        "4. Periksa area PMIC di board dengan mikroskop - cari tanda korosi atau gosong",
+        "5. Masukkan ke DFU mode - jika berhasil, PMIC mungkin masih bisa diperbaiki"
+      ],
+      "prosedur_perbaikan": [
+        "Bersihkan korosi di area PMIC dengan isopropyl alcohol dan ultrasonic cleaner",
+        "Re-ball atau re-flow PMIC menggunakan BGA hot air station",
+        "Ganti PMIC baru jika chip sudah rusak total",
+        "Periksa dan perbaiki jalur VCC pada PCB",
+        "Uji dengan DC power supply sebelum memasang baterai"
+      ],
+      "estimasi_biaya": {
+        "rentang": "Rp 400.000 - Rp 1.200.000",
+        "rincian": {
+          "Re-solder / Re-ball PMIC (jasa)": "Rp 400.000 - Rp 700.000",
+          "Ganti PMIC baru (komponen + jasa)": "Rp 700.000 - Rp 1.200.000",
+          "Perbaikan jalur PCB tambahan": "Rp 200.000 - Rp 400.000"
+        }
+      },
+      "tingkat_kesulitan": "Sangat Tinggi (level board repair advanced)",
+      "waktu_perbaikan": "3 - 8 jam",
+      "model_rentan": [
+        "iPhone 6",
+        "iPhone 7",
+        "iPhone X",
+        "iPhone XS"
+      ],
+      "catatan_teknis": "PMIC adalah chip BGA (Ball Grid Array) yang memiliki ratusan solder ball di bawahnya yang tidak terlihat tanpa sinar-X. Perbaikan PMIC memerlukan BGA rework station profesional dan keahlian board repair tingkat lanjut. Tingkat keberhasilan bervariasi 50-80%."
+    },
+    "IC WTR Rusak": {
+      "kode": "WTR-001",
+      "nama_lengkap": "Kerusakan IC WTR (Wireless Transceiver - RF Baseband Chip)",
+      "kategori": "Komponen IC / Chip Motherboard",
+      "deskripsi_umum": "IC WTR (Wireless Transceiver) adalah chip RF yang mengelola transmisi dan penerimaan sinyal nirkabel: sinyal seluler (2G/3G/4G/5G), WiFi, dan Bluetooth. Kerusakan chip ini menyebabkan iPhone kehilangan kemampuan konektivitas nirkabel.",
+      "gejala_utama": [
+        "Status No Service permanen meskipun SIM card normal",
+        "WiFi tidak dapat diaktifkan (toggle WiFi abu-abu/greyed out)",
+        "Bluetooth tidak dapat diaktifkan (toggle Bluetooth abu-abu)",
+        "Sinyal seluler mati total, tidak ada bar sama sekali",
+        "iPhone tidak bisa mendeteksi jaringan apapun"
+      ],
+      "gejala_pendukung": [
+        "IMEI hilang atau menampilkan angka 000000000000",
+        "Settings > General > About > Carrier menampilkan No SIM",
+        "Airplane Mode tidak bisa dinonaktifkan",
+        "Toggle WiFi dan Bluetooth tidak merespons sentuhan"
+      ],
+      "penyebab_umum": [
+        "Masuk air - IC WTR sangat rentan terhadap korosi akibat air",
+        "Benturan yang menyebabkan solder micro-crack pada chip",
+        "Panas berlebih dalam jangka panjang",
+        "Kerusakan antena yang membebani IC WTR"
+      ],
+      "komponen_terdampak": [
+        "IC WTR chip (Wireless Transceiver)",
+        "Antena seluler dan WiFi",
+        "IC modem baseband (terkait)",
+        "Konektor antena yang menghubungkan ke IC WTR"
+      ],
+      "langkah_diagnosis": [
+        "1. Cek Settings > General > About > IMEI - jika 000000 atau tidak ada, IC WTR rusak berat",
+        "2. Cek apakah toggle WiFi dan Bluetooth bisa diaktifkan",
+        "3. Masukkan SIM card baru untuk eliminasi SIM rusak",
+        "4. Cek di bawah mikroskop: area IC WTR di board (biasanya dekat konektor SIM)",
+        "5. Ukur sinyal RF menggunakan spectrum analyzer jika tersedia"
+      ],
+      "prosedur_perbaikan": [
+        "Bersihkan area IC WTR dengan isopropyl alcohol dan ultrasonic cleaner",
+        "Re-ball atau re-flow IC WTR menggunakan BGA hot air station",
+        "Ganti IC WTR baru jika sudah rusak permanen",
+        "Periksa konektor antena setelah perbaikan",
+        "Uji semua fungsi RF: sinyal seluler, WiFi, Bluetooth"
+      ],
+      "estimasi_biaya": {
+        "rentang": "Rp 450.000 - Rp 1.000.000",
+        "rincian": {
+          "Re-solder IC WTR (jasa)": "Rp 450.000 - Rp 650.000",
+          "Ganti IC WTR baru (komponen + jasa)": "Rp 650.000 - Rp 1.000.000"
+        }
+      },
+      "tingkat_kesulitan": "Sangat Tinggi (micro-soldering BGA)",
+      "waktu_perbaikan": "3 - 6 jam",
+      "model_rentan": [
+        "iPhone 6s",
+        "iPhone 7",
+        "iPhone 8",
+        "iPhone X"
+      ],
+      "catatan_teknis": "IC WTR sering ikut rusak bersama IC modem baseband ketika iPhone terkena air. Jika IMEI hilang (000000), kemungkinan besar IC WTR atau baseband modem yang bermasalah. Perbaikan ini memerlukan keahlian board repair yang sangat tinggi."
+    },
+    "Kamera Rusak": {
+      "kode": "KAM-001",
+      "nama_lengkap": "Kerusakan Modul Kamera (Depan / Belakang)",
+      "kategori": "Komponen Modul",
+      "deskripsi_umum": "Modul kamera iPhone terdiri dari sensor gambar, lensa, dan OIS (Optical Image Stabilization). Kerusakan dapat terjadi pada kamera belakang (utama/ultrawide/telephoto) atau kamera depan (Face ID module).",
+      "gejala_utama": [
+        "Layar kamera blank / hitam saat aplikasi kamera dibuka",
+        "Gambar sangat buram atau tidak fokus sama sekali",
+        "Kamera menampilkan error Camera not available",
+        "Flash tidak mau menyala",
+        "Kamera depan tidak muncul saat switching ke selfie mode"
+      ],
+      "gejala_pendukung": [
+        "Foto yang dihasilkan ada bintik hitam atau cahaya bocor",
+        "Video goyang berlebihan karena OIS tidak berfungsi",
+        "Kamera bersuara clicking abnormal saat autofokus",
+        "Face ID tidak berfungsi jika kamera depan TrueDepth rusak",
+        "Aplikasi kamera crash saat dibuka"
+      ],
+      "penyebab_umum": [
+        "Terjatuh dan benturan langsung pada modul kamera",
+        "Kaca pelindung lensa kamera pecah merusak elemen lensa",
+        "Masuk air melalui area kamera",
+        "Kabel fleksibel kamera putus atau konektor lepas",
+        "Komponen OIS rusak akibat getaran ekstrim"
+      ],
+      "komponen_terdampak": [
+        "Modul kamera belakang (utama 12-48MP)",
+        "Modul kamera ultrawide dan telephoto (model Pro)",
+        "Modul kamera depan (TrueDepth camera system)",
+        "Kabel fleksibel kamera",
+        "Konektor kamera pada motherboard"
+      ],
+      "langkah_diagnosis": [
+        "1. Buka aplikasi Kamera - amati apakah preview muncul",
+        "2. Switch antara kamera depan dan belakang",
+        "3. Uji semua lensa (main, ultra-wide, telephoto jika ada)",
+        "4. Foto dan video - analisis kualitas gambar",
+        "5. Buka casing, lepas dan pasang kembali konektor kamera",
+        "6. Uji dengan modul kamera lain untuk isolasi masalah"
+      ],
+      "prosedur_perbaikan": [
+        "Pasang ulang konektor kamera yang mungkin longgar",
+        "Ganti modul kamera yang rusak dengan yang baru atau original",
+        "Pada iPhone 13 ke atas: gunakan alat Apple System Configuration untuk pairing kamera baru",
+        "Ganti kabel fleksibel jika putus"
+      ],
+      "estimasi_biaya": {
+        "rentang": "Rp 300.000 - Rp 1.500.000",
+        "rincian": {
+          "Kamera belakang iPhone 8/SE": "Rp 300.000 - Rp 500.000",
+          "Kamera belakang iPhone X-12": "Rp 500.000 - Rp 800.000",
+          "Kamera belakang iPhone 13-15 Pro": "Rp 800.000 - Rp 1.500.000",
+          "Kamera depan (dengan Face ID)": "Rp 400.000 - Rp 900.000"
+        }
+      },
+      "tingkat_kesulitan": "Menengah",
+      "waktu_perbaikan": "30 - 90 menit",
+      "model_rentan": [
+        "iPhone 11 Pro",
+        "iPhone 12 Pro",
+        "iPhone 13 Pro"
+      ],
+      "catatan_teknis": "Mulai iPhone 13, kamera dikunci secara kriptografis ke motherboard. Mengganti kamera dengan unit dari iPhone lain akan menonaktifkan fitur tertentu (photographic styles, dll). Diperlukan Apple Service Toolkit 2 untuk full pairing."
+    },
+    "LCD Rusak": {
+      "kode": "LCD-001",
+      "nama_lengkap": "Kerusakan Layar LCD / OLED (Display Module)",
+      "kategori": "Komponen Layar",
+      "deskripsi_umum": "Layar iPhone menggunakan teknologi LCD (model standar lama) atau OLED/Super Retina (model X ke atas). Kerusakan layar adalah keluhan paling umum dan mencakup berbagai jenis kerusakan dari retak fisik hingga piksel mati.",
+      "gejala_utama": [
+        "Layar retak, pecah, atau terkelupas",
+        "Tampilan greenscreen, pinkscreen, atau warna tidak normal",
+        "Layar hitam total namun iPhone masih aktif ada suara notifikasi",
+        "Ghost touch - layar bergerak atau input sendiri tanpa disentuh",
+        "Garis-garis vertikal atau horizontal pada layar",
+        "Sebagian layar tidak responsif terhadap sentuhan"
+      ],
+      "gejala_pendukung": [
+        "Backlight tidak menyala - layar sangat gelap namun masih ada gambar samar",
+        "Layar berkedip-kedip (flickering)",
+        "Burn-in atau ghosting pada OLED",
+        "Warna layar tampak pudar atau kekuningan",
+        "Kecerahan tidak bisa diatur"
+      ],
+      "penyebab_umum": [
+        "Terjatuh dan layar berbenturan dengan permukaan keras",
+        "Tekanan mekanik berlebihan pada layar",
+        "Masuk air yang merusak panel LCD/OLED",
+        "Usia display yang sudah tua (burn-in pada OLED)",
+        "Kabel fleksibel layar putus atau konektor lepas"
+      ],
+      "komponen_terdampak": [
+        "Panel LCD atau OLED",
+        "Digitizer (layer touchscreen)",
+        "Backlight (untuk LCD)",
+        "Kabel fleksibel layar",
+        "Konektor layar pada motherboard"
+      ],
+      "langkah_diagnosis": [
+        "1. Periksa fisik - ada retakan kaca atau LCD pecah?",
+        "2. Cek apakah iPhone masih merespons suara dan getaran (berarti board masih hidup)",
+        "3. Hubungkan ke iTunes/Finder - jika terdeteksi, board baik dan layar yang rusak",
+        "4. Lepas konektor layar dan hubungkan layar pengganti untuk test",
+        "5. Periksa backlight IC jika layar gelap total dengan senter ke layar"
+      ],
+      "prosedur_perbaikan": [
+        "Ganti panel layar yang rusak dengan yang baru original atau aftermarket berkualitas",
+        "Pada iPhone X-15: kalibrasi True Tone menggunakan Apple Service Toolkit",
+        "Pasang screen protector baru setelah penggantian",
+        "Pastikan gasket waterproof terpasang kembali"
+      ],
+      "estimasi_biaya": {
+        "rentang": "Rp 400.000 - Rp 2.500.000",
+        "rincian": {
+          "iPhone 8 / SE (LCD)": "Rp 400.000 - Rp 600.000",
+          "iPhone X / XS (OLED)": "Rp 700.000 - Rp 1.200.000",
+          "iPhone 11 (LCD)": "Rp 500.000 - Rp 800.000",
+          "iPhone 12 / 13 (OLED)": "Rp 900.000 - Rp 1.500.000",
+          "iPhone 14 / 15 Pro (ProMotion OLED)": "Rp 1.500.000 - Rp 2.500.000"
+        }
+      },
+      "tingkat_kesulitan": "Mudah-Menengah",
+      "waktu_perbaikan": "30 - 60 menit",
+      "model_rentan": [
+        "iPhone 6",
+        "iPhone 7",
+        "iPhone 8",
+        "iPhone X",
+        "iPhone 11"
+      ],
+      "catatan_teknis": "iPhone X ke atas menggunakan OLED yang lebih mahal dari LCD. True Tone kalibrasi tersimpan di chip layar asli - penggantian dengan layar aftermarket akan kehilangan True Tone kecuali menggunakan Apple Service Toolkit untuk transfer data kalibrasi."
+    },
+    "Mikrofon Rusak": {
+      "kode": "MIC-001",
+      "nama_lengkap": "Kerusakan Mikrofon (Microphone)",
+      "kategori": "Komponen Audio Input",
+      "deskripsi_umum": "iPhone memiliki 3 mikrofon: mikrofon utama (bawah, dekat port Lightning), mikrofon belakang (dekat kamera), dan mikrofon depan (earpiece). Kerusakan bisa pada satu atau semua mikrofon.",
+      "gejala_utama": [
+        "Suara tidak terdengar oleh lawan bicara saat telepon",
+        "Rekaman suara di Voice Memos bisu atau sangat kecil",
+        "Siri tidak bisa menangkap perintah suara",
+        "Lawan bicara mendengar suara sangat kecil atau berisik",
+        "FaceTime - audio pihak lain tidak bisa mendengar suara"
+      ],
+      "gejala_pendukung": [
+        "Kamera video merekam tanpa suara",
+        "Voice control tidak merespons",
+        "Perekaman di WhatsApp atau Instagram tidak menghasilkan suara",
+        "Noise cancellation tidak berfungsi saat telepon"
+      ],
+      "penyebab_umum": [
+        "Debu atau kotoran yang menyumbat lubang mikrofon",
+        "Masuk air merusak elemen mikrofon",
+        "Benturan yang merusak membran mikrofon",
+        "Kabel fleksibel mikrofon putus",
+        "IC Audio Codec rusak (memengaruhi semua fungsi audio)"
+      ],
+      "komponen_terdampak": [
+        "Modul mikrofon utama (bawah)",
+        "Mikrofon belakang (terintegrasi di flex kamera belakang)",
+        "Mikrofon depan (terintegrasi di flex earpiece)",
+        "IC Audio Codec jika masalah di level chip"
+      ],
+      "langkah_diagnosis": [
+        "1. Buka Voice Memos > rekam selama 10 detik > putar - ada suara?",
+        "2. Test mikrofon spesifik: panggilan telepon (mikrofon bawah), video selfie (mikrofon depan), video kamera belakang (mikrofon belakang)",
+        "3. Bersihkan lubang mikrofon bawah dengan sikat halus atau udara tekan",
+        "4. Cek apakah masalah ada di semua mikrofon mengarah ke IC Audio atau hanya satu mengarah ke mikrofon fisik",
+        "5. Lepas konektor bottom flex dan test - jika mikrofon bawah mati kemungkinan flex rusak"
+      ],
+      "prosedur_perbaikan": [
+        "Bersihkan lubang mikrofon dengan jarum halus dan udara tekan (hati-hati)",
+        "Ganti modul bottom flex yang mengandung mikrofon utama, port Lightning, speaker bawah",
+        "Ganti kabel fleksibel kamera belakang jika mikrofon belakang yang rusak",
+        "Jika semua mikrofon mati evaluasi IC Audio Codec"
+      ],
+      "estimasi_biaya": {
+        "rentang": "Rp 150.000 - Rp 500.000",
+        "rincian": {
+          "Pembersihan mikrofon (jasa)": "Rp 50.000 - Rp 100.000",
+          "Ganti bottom flex module": "Rp 150.000 - Rp 350.000",
+          "Ganti flex kamera (mikrofon belakang)": "Rp 200.000 - Rp 500.000"
+        }
+      },
+      "tingkat_kesulitan": "Mudah-Menengah",
+      "waktu_perbaikan": "30 - 60 menit",
+      "model_rentan": [
+        "iPhone 7",
+        "iPhone 7 Plus",
+        "iPhone 8"
+      ],
+      "catatan_teknis": "Sering kali mikrofon hanya tersumbat debu dan kotoran - coba bersihkan dulu sebelum ganti komponen. Gunakan sikat gigi halus kering atau udara bertekanan rendah pada lubang mikrofon bawah."
+    },
+    "Port Pengisian Rusak": {
+      "kode": "PRT-001",
+      "nama_lengkap": "Kerusakan Port Pengisian Daya (Lightning / USB-C Connector)",
+      "kategori": "Komponen Konektor",
+      "deskripsi_umum": "Port pengisian (Lightning pada iPhone 7-14, USB-C pada iPhone 15) adalah titik koneksi fisik untuk pengisian daya dan transfer data. Kerusakan sering disebabkan oleh keausan mekanis atau kotoran yang masuk.",
+      "gejala_utama": [
+        "Kabel charger terasa longgar dan mudah lepas dari port",
+        "iPhone tidak mengisi kecuali kabel dipegang pada posisi tertentu",
+        "Port pengisian bergoyang atau ada celah ketika kabel dimasukkan",
+        "Proses pengisian sering terputus-putus (keluar masuk)",
+        "Tidak bisa transfer data ke komputer via kabel"
+      ],
+      "gejala_pendukung": [
+        "Terdengar bunyi klik berkali-kali saat kabel dicolok",
+        "Debu atau kotoran terlihat di dalam port",
+        "Pin di dalam port bengkok atau patah",
+        "Port terasa panas saat mengisi daya"
+      ],
+      "penyebab_umum": [
+        "Debu dan kotoran yang menumpuk di dalam port selama berbulan-bulan",
+        "Penarikan kabel charger yang kasar atau sembarangan",
+        "Penggunaan kabel berkualitas buruk dengan kepala yang terlalu besar",
+        "Keausan normal akibat penggunaan bertahun-tahun",
+        "Masuk air yang merusak pin di dalam port"
+      ],
+      "komponen_terdampak": [
+        "Konektor Lightning/USB-C (port fisik)",
+        "Bottom flex module (mengandung port + mikrofon + speaker bawah)",
+        "Pin-pin di dalam port",
+        "IC Cas / Tristar (komponen terkait)"
+      ],
+      "langkah_diagnosis": [
+        "1. Periksa port dengan senter - apakah ada debu/kotoran yang menyumbat?",
+        "2. Coba dengan kabel Apple original yang diketahui berfungsi baik",
+        "3. Cek apakah kabel perlu ditekan ke sudut tertentu agar ngecas (tanda pin bengkok)",
+        "4. Coba berbagai kabel - jika semua kabel bermasalah, portnya yang rusak",
+        "5. Gunakan jarum SIM card ejector untuk mengecek kedalaman port"
+      ],
+      "prosedur_perbaikan": [
+        "LANGKAH PERTAMA: Bersihkan port dengan tusuk gigi plastik atau sikat halus tanpa merusak pin",
+        "Gunakan udara bertekanan (kaleng kompresor) untuk membersihkan debu",
+        "Jika port bengkok: ganti bottom flex module secara keseluruhan",
+        "Pasang bottom flex baru yang mengandung port Lightning/USB-C, mikrofon, dan speaker bawah"
+      ],
+      "estimasi_biaya": {
+        "rentang": "Rp 100.000 - Rp 450.000",
+        "rincian": {
+          "Pembersihan port (jasa)": "Rp 50.000 - Rp 100.000",
+          "Ganti bottom flex iPhone 8/SE": "Rp 100.000 - Rp 200.000",
+          "Ganti bottom flex iPhone X-12": "Rp 150.000 - Rp 300.000",
+          "Ganti bottom flex iPhone 13-15": "Rp 250.000 - Rp 450.000"
+        }
+      },
+      "tingkat_kesulitan": "Mudah",
+      "waktu_perbaikan": "20 - 45 menit",
+      "model_rentan": [
+        "iPhone 6",
+        "iPhone 7",
+        "iPhone 8",
+        "iPhone X",
+        "iPhone 11"
+      ],
+      "catatan_teknis": "Sebelum mengganti port, SELALU coba bersihkan dulu! Sangat sering port yang tidak bisa ngecas ternyata hanya tersumbat debu. Gunakan tusuk gigi kayu bukan logam untuk mengkorek debu dari sudut-sudut port secara perlahan."
+    },
+    "Speaker Rusak": {
+      "kode": "SPK-001",
+      "nama_lengkap": "Kerusakan Speaker (Loudspeaker Bawah / Earpiece)",
+      "kategori": "Komponen Audio Output",
+      "deskripsi_umum": "iPhone memiliki dua speaker: speaker utama (loudspeaker bawah untuk musik/notifikasi) dan earpiece (speaker atas kecil untuk panggilan telepon). Kerusakan bisa pada satu atau keduanya.",
+      "gejala_utama": [
+        "Tidak ada suara saat memutar musik atau video",
+        "Suara speaker pecah, serak, atau terdistorsi pada volume tinggi",
+        "Volume maksimum terasa sangat kecil",
+        "Speaker bawah berbunyi namun earpiece mati saat telepon",
+        "Notifikasi tidak berbunyi meskipun tidak dalam mode senyap"
+      ],
+      "gejala_pendukung": [
+        "Suara terdengar dari satu sisi saja pada model stereo speaker",
+        "Getaran speaker terasa berlebihan karena speaker lepas dari dudukan",
+        "Bunyi kresek atau dengung saat memainkan audio",
+        "Speaker hanya berbunyi pada frekuensi tertentu"
+      ],
+      "penyebab_umum": [
+        "Debu atau kotoran yang menyumbat grille speaker",
+        "Membran speaker robek akibat volume terlalu keras dalam waktu lama",
+        "Masuk air yang merusak membran speaker",
+        "Benturan yang melepas speaker dari dudukannya",
+        "IC Audio Codec rusak yang memengaruhi output audio"
+      ],
+      "komponen_terdampak": [
+        "Loudspeaker (speaker bawah/utama)",
+        "Earpiece speaker (speaker atas)",
+        "Grille speaker yang dapat tersumbat",
+        "IC Audio Codec jika masalah di level chip"
+      ],
+      "langkah_diagnosis": [
+        "1. Tes speaker bawah: Settings > Sounds > putar ringtone dengan volume penuh",
+        "2. Tes earpiece: lakukan panggilan telepon",
+        "3. Bersihkan grille speaker dengan sikat halus terlebih dahulu",
+        "4. Colokkan headphone - jika suara normal lewat headphone, masalah di speaker bukan IC Audio",
+        "5. Lepas konektor bottom flex dan uji dengan komponen pengganti"
+      ],
+      "prosedur_perbaikan": [
+        "Bersihkan grille speaker bawah dengan sikat gigi halus gerakan searah",
+        "Gunakan udara bertekanan rendah untuk membersihkan debu dari dalam",
+        "Ganti modul speaker yang rusak",
+        "Ganti bottom flex module jika speaker terintegrasi di dalamnya",
+        "Untuk earpiece: ganti flex earpiece atau proximity sensor module"
+      ],
+      "estimasi_biaya": {
+        "rentang": "Rp 100.000 - Rp 400.000",
+        "rincian": {
+          "Pembersihan speaker (jasa)": "Rp 50.000 - Rp 100.000",
+          "Ganti loudspeaker iPhone 8/SE": "Rp 100.000 - Rp 200.000",
+          "Ganti loudspeaker iPhone X-12": "Rp 150.000 - Rp 300.000",
+          "Ganti earpiece speaker": "Rp 100.000 - Rp 250.000",
+          "Ganti loudspeaker iPhone 13-15": "Rp 200.000 - Rp 400.000"
+        }
+      },
+      "tingkat_kesulitan": "Mudah",
+      "waktu_perbaikan": "20 - 45 menit",
+      "model_rentan": [
+        "iPhone 7",
+        "iPhone 8",
+        "iPhone X",
+        "iPhone 11"
+      ],
+      "catatan_teknis": "Coba bersihkan grille speaker dengan sikat gigi halus kering - sangat sering menyelesaikan masalah speaker kecil atau muffled. Air yang masuk ke speaker bisa keluar sendiri jika iPhone digoyang perlahan dan ditiup pada posisi speaker menghadap ke bawah."
+    },
+    "Tombol Rusak": {
+      "kode": "TMB-001",
+      "nama_lengkap": "Kerusakan Tombol Fisik (Power / Volume / Home / Mute Switch)",
+      "kategori": "Komponen Input Fisik",
+      "deskripsi_umum": "iPhone memiliki beberapa tombol fisik: tombol power (samping kanan), tombol volume (samping kiri), mute switch (kiri atas), dan tombol Home (model lama). Kerusakan bisa pada satu atau beberapa tombol.",
+      "gejala_utama": [
+        "Tombol power tidak bisa menyalakan atau mengunci layar",
+        "Tombol volume tidak merespons saat ditekan",
+        "Mute switch terasa longgar atau tidak ada efek",
+        "Tombol Home tidak bisa ditekan atau terasa keras",
+        "Tombol masuk sendiri tanpa ditekan (ghost button)"
+      ],
+      "gejala_pendukung": [
+        "Perlu menekan tombol berkali-kali agar merespons",
+        "Bunyi klik tombol tidak terasa",
+        "AssistiveTouch dibutuhkan karena tombol tidak berfungsi",
+        "Screenshot tidak bisa dilakukan karena tombol volume + power bermasalah"
+      ],
+      "penyebab_umum": [
+        "Keausan normal akibat penggunaan ribuan kali sehari",
+        "Benturan yang merusak mekanisme tombol",
+        "Debu atau kotoran yang masuk ke celah tombol",
+        "Masuk air yang mengoksidasi kontak tombol",
+        "Frame bengkok yang menekan tombol secara permanen"
+      ],
+      "komponen_terdampak": [
+        "Tombol power (flex kabel + dome switch)",
+        "Tombol volume atas/bawah (flex kabel)",
+        "Mute switch (flex kabel)",
+        "Tombol Home (fingerprint sensor + flex pada model lama)",
+        "Kabel fleksibel tombol"
+      ],
+      "langkah_diagnosis": [
+        "1. Uji setiap tombol satu per satu secara sistematis",
+        "2. Aktifkan AssistiveTouch sementara sebagai pengganti tombol",
+        "3. Cek apakah frame bengkok menekan tombol",
+        "4. Buka casing, periksa kabel fleksibel tombol dari kerusakan atau lepas",
+        "5. Cek dome switch (tactile switch kecil) di balik tombol - mungkin sudah pipih"
+      ],
+      "prosedur_perbaikan": [
+        "Bersihkan area sekitar tombol dengan isopropyl alcohol dan sikat halus",
+        "Pasang ulang konektor flex tombol yang mungkin longgar",
+        "Ganti flex kabel tombol yang rusak",
+        "Ganti dome switch jika komponen tersebut yang aus",
+        "CATATAN PENTING: Tombol Home pada iPhone 7 dan setelahnya ter-pair dengan motherboard - HANYA bisa diganti di Apple Service Center untuk mempertahankan Touch ID"
+      ],
+      "estimasi_biaya": {
+        "rentang": "Rp 100.000 - Rp 500.000",
+        "rincian": {
+          "Ganti tombol power/volume": "Rp 100.000 - Rp 250.000",
+          "Ganti mute switch": "Rp 75.000 - Rp 150.000",
+          "Ganti tombol Home (tanpa Touch ID)": "Rp 150.000 - Rp 300.000",
+          "Tombol Home original dengan Touch ID (Apple only)": "Rp 300.000 - Rp 500.000"
+        }
+      },
+      "tingkat_kesulitan": "Mudah-Menengah",
+      "waktu_perbaikan": "30 - 60 menit",
+      "model_rentan": [
+        "iPhone 6",
+        "iPhone 7",
+        "iPhone 8",
+        "iPhone SE"
+      ],
+      "catatan_teknis": "Tombol Home pada iPhone 7, 8, dan SE generasi 2 menggunakan Force Touch (bukan tombol mekanis) dan terhubung ke sistem Touch ID. Penggantian tombol Home oleh teknisi pihak ketiga akan MENONAKTIFKAN Touch ID secara permanen. Gunakan AssistiveTouch sebagai solusi sementara."
+    }
+  }
+}

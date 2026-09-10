@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - run: python -m compileall -q app tests research
+      - run: python -m unittest discover -s tests -v
+      - name: Reject common committed secret formats
+        shell: bash
+        run: |
+          if git grep -nE '(gsk_[A-Za-z0-9_-]{20,}|sk-proj-[A-Za-z0-9_.-]{20,}|sk-ws-[A-Za-z0-9_.-]{20,}|SUPABASE_SERVICE_ROLE_KEY=[A-Za-z0-9._-]{20,})' -- ':!*.example'; then
+            echo "Potential secret detected in tracked files."
+            exit 1
+          fi

@@ -1,0 +1,1689 @@
+{
+  "metadata": {
+    "generated_at": "2026-08-29T13:16:14.643656+00:00",
+    "train": "data/dataLatih\\dataLatih-2026-08-29-20-08.csv",
+    "test": "data/dataUji\\dataUji-2026-08-29-20-08.csv",
+    "train_sha256": "9e4d4c4d00837615146b17b43c65dedc1a2fa0e767399cfc06c84fabf17681df",
+    "test_sha256": "15e1872a0d028918450ba4b776de9b24692c06542f1ee7efa358e6f0162a2136",
+    "particles": 30,
+    "iterations": 100,
+    "seeds": [
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51
+    ]
+  },
+  "classes": [
+    "Antena Signal Rusak",
+    "Backdoor Rusak",
+    "Baterai Rusak",
+    "Housing Rusak",
+    "IC Audio Rusak",
+    "IC Cas Rusak",
+    "IC Power Rusak",
+    "IC WTR Rusak",
+    "Kamera Rusak",
+    "LCD Rusak",
+    "Mikrofon Rusak",
+    "Port Pengisian Rusak",
+    "Speaker Rusak",
+    "Tombol Rusak"
+  ],
+  "leakage_audit": {
+    "train": {
+      "available": true,
+      "flagged_rows": 561,
+      "total_rows": 736,
+      "flagged_ratio": 0.7622282608695652,
+      "sample": [
+        {
+          "row": 0,
+          "label": "Speaker Rusak",
+          "terms": [
+            "speaker",
+            "buzzer"
+          ]
+        },
+        {
+          "row": 1,
+          "label": "LCD Rusak",
+          "terms": [
+            "lcd"
+          ]
+        },
+        {
+          "row": 2,
+          "label": "Backdoor Rusak",
+          "terms": [
+            "backdoor"
+          ]
+        },
+        {
+          "row": 3,
+          "label": "LCD Rusak",
+          "terms": [
+            "lcd",
+            "screen"
+          ]
+        },
+        {
+          "row": 4,
+          "label": "LCD Rusak",
+          "terms": [
+            "lcd"
+          ]
+        },
+        {
+          "row": 5,
+          "label": "Baterai Rusak",
+          "terms": [
+            "baterai"
+          ]
+        },
+        {
+          "row": 6,
+          "label": "Kamera Rusak",
+          "terms": [
+            "kamera"
+          ]
+        },
+        {
+          "row": 7,
+          "label": "LCD Rusak",
+          "terms": [
+            "lcd"
+          ]
+        },
+        {
+          "row": 8,
+          "label": "LCD Rusak",
+          "terms": [
+            "lcd"
+          ]
+        },
+        {
+          "row": 9,
+          "label": "Tombol Rusak",
+          "terms": [
+            "tombol"
+          ]
+        },
+        {
+          "row": 11,
+          "label": "IC Power Rusak",
+          "terms": [
+            "ic power"
+          ]
+        },
+        {
+          "row": 13,
+          "label": "LCD Rusak",
+          "terms": [
+            "lcd"
+          ]
+        },
+        {
+          "row": 14,
+          "label": "LCD Rusak",
+          "terms": [
+            "lcd"
+          ]
+        },
+        {
+          "row": 15,
+          "label": "Backdoor Rusak",
+          "terms": [
+            "backdoor"
+          ]
+        },
+        {
+          "row": 16,
+          "label": "Housing Rusak",
+          "terms": [
+            "housing"
+          ]
+        },
+        {
+          "row": 18,
+          "label": "LCD Rusak",
+          "terms": [
+            "lcd"
+          ]
+        },
+        {
+          "row": 19,
+          "label": "Baterai Rusak",
+          "terms": [
+            "baterai"
+          ]
+        },
+        {
+          "row": 20,
+          "label": "LCD Rusak",
+          "terms": [
+            "lcd"
+          ]
+        },
+        {
+          "row": 21,
+          "label": "Housing Rusak",
+          "terms": [
+            "housing"
+          ]
+        },
+        {
+          "row": 22,
+          "label": "LCD Rusak",
+          "terms": [
+            "lcd"
+          ]
+        },
+        {
+          "row": 23,
+          "label": "Backdoor Rusak",
+          "terms": [
+            "backdoor"
+          ]
+        },
+        {
+          "row": 24,
+          "label": "Backdoor Rusak",
+          "terms": [
+            "backdoor"
+          ]
+        },
+        {
+          "row": 25,
+          "label": "Baterai Rusak",
+          "terms": [
+            "baterai"
+          ]
+        },
+        {
+          "row": 26,
+          "label": "LCD Rusak",
+          "terms": [
+            "lcd"
+          ]
+        },
+        {
+          "row": 29,
+          "label": "Kamera Rusak",
+          "terms": [
+            "kamera"
+          ]
+        },
+        {
+          "row": 30,
+          "label": "Kamera Rusak",
+          "terms": [
+            "kamera"
+          ]
+        },
+        {
+          "row": 31,
+          "label": "LCD Rusak",
+          "terms": [
+            "screen"
+          ]
+        },
+        {
+          "row": 32,
+          "label": "Kamera Rusak",
+          "terms": [
+            "kamera"
+          ]
+        },
+        {
+          "row": 34,
+          "label": "Baterai Rusak",
+          "terms": [
+            "baterai"
+          ]
+        },
+        {
+          "row": 35,
+          "label": "Baterai Rusak",
+          "terms": [
+            "baterai"
+          ]
+        },
+        {
+          "row": 36,
+          "label": "Kamera Rusak",
+          "terms": [
+            "kamera"
+          ]
+        },
+        {
+          "row": 37,
+          "label": "LCD Rusak",
+          "terms": [
+            "lcd"
+          ]
+        },
+        {
+          "row": 38,
+          "label": "Baterai Rusak",
+          "terms": [
+            "baterai"
+          ]
+        },
+        {
+          "row": 39,
+          "label": "LCD Rusak",
+          "terms": [
+            "lcd"
+          ]
+        },
+        {
+          "row": 40,
+          "label": "LCD Rusak",
+          "terms": [
+            "lcd"
+          ]
+        },
+        {
+          "row": 41,
+          "label": "Tombol Rusak",
+          "terms": [
+            "tombol"
+          ]
+        },
+        {
+          "row": 42,
+          "label": "LCD Rusak",
+          "terms": [
+            "lcd"
+          ]
+        },
+        {
+          "row": 44,
+          "label": "LCD Rusak",
+          "terms": [
+            "screen"
+          ]
+        },
+        {
+          "row": 45,
+          "label": "LCD Rusak",
+          "terms": [
+            "lcd"
+          ]
+        },
+        {
+          "row": 47,
+          "label": "LCD Rusak",
+          "terms": [
+            "lcd"
+          ]
+        },
+        {
+          "row": 48,
+          "label": "Baterai Rusak",
+          "terms": [
+            "baterai"
+          ]
+        },
+        {
+          "row": 49,
+          "label": "Speaker Rusak",
+          "terms": [
+            "speaker"
+          ]
+        },
+        {
+          "row": 50,
+          "label": "Baterai Rusak",
+          "terms": [
+            "baterai"
+          ]
+        },
+        {
+          "row": 53,
+          "label": "Baterai Rusak",
+          "terms": [
+            "baterai"
+          ]
+        },
+        {
+          "row": 54,
+          "label": "LCD Rusak",
+          "terms": [
+            "lcd"
+          ]
+        },
+        {
+          "row": 55,
+          "label": "Baterai Rusak",
+          "terms": [
+            "baterai"
+          ]
+        },
+        {
+          "row": 56,
+          "label": "Kamera Rusak",
+          "terms": [
+            "kamera"
+          ]
+        },
+        {
+          "row": 57,
+          "label": "Tombol Rusak",
+          "terms": [
+            "tombol"
+          ]
+        },
+        {
+          "row": 58,
+          "label": "Baterai Rusak",
+          "terms": [
+            "baterai"
+          ]
+        },
+        {
+          "row": 59,
+          "label": "Speaker Rusak",
+          "terms": [
+            "speaker",
+            "buzzer"
+          ]
+        }
+      ],
+      "warning": "Kemunculan istilah komponen tidak selalu leakage; verifikasi terhadap catatan gejala asli wajib dilakukan."
+    },
+    "test": {
+      "available": true,
+      "flagged_rows": 143,
+      "total_rows": 185,
+      "flagged_ratio": 0.772972972972973,
+      "sample": [
+        {
+          "row": 0,
+          "label": "Tombol Rusak",
+          "terms": [
+            "tombol"
+          ]
+        },
+        {
+          "row": 1,
+          "label": "Baterai Rusak",
+          "terms": [
+            "baterai"
+          ]
+        },
+        {
+          "row": 2,
+          "label": "LCD Rusak",
+          "terms": [
+            "lcd"
+          ]
+        },
+        {
+          "row": 3,
+          "label": "Baterai Rusak",
+          "terms": [
+            "baterai"
+          ]
+        },
+        {
+          "row": 4,
+          "label": "LCD Rusak",
+          "terms": [
+            "lcd"
+          ]
+        },
+        {
+          "row": 5,
+          "label": "Kamera Rusak",
+          "terms": [
+            "kamera"
+          ]
+        },
+        {
+          "row": 6,
+          "label": "Port Pengisian Rusak",
+          "terms": [
+            "konektor cas"
+          ]
+        },
+        {
+          "row": 7,
+          "label": "Backdoor Rusak",
+          "terms": [
+            "backdoor"
+          ]
+        },
+        {
+          "row": 9,
+          "label": "LCD Rusak",
+          "terms": [
+            "lcd"
+          ]
+        },
+        {
+          "row": 10,
+          "label": "Baterai Rusak",
+          "terms": [
+            "baterai"
+          ]
+        },
+        {
+          "row": 11,
+          "label": "LCD Rusak",
+          "terms": [
+            "lcd"
+          ]
+        },
+        {
+          "row": 12,
+          "label": "Baterai Rusak",
+          "terms": [
+            "baterai"
+          ]
+        },
+        {
+          "row": 13,
+          "label": "Tombol Rusak",
+          "terms": [
+            "tombol"
+          ]
+        },
+        {
+          "row": 14,
+          "label": "Kamera Rusak",
+          "terms": [
+            "kamera"
+          ]
+        },
+        {
+          "row": 15,
+          "label": "LCD Rusak",
+          "terms": [
+            "lcd"
+          ]
+        },
+        {
+          "row": 16,
+          "label": "Baterai Rusak",
+          "terms": [
+            "baterai"
+          ]
+        },
+        {
+          "row": 17,
+          "label": "LCD Rusak",
+          "terms": [
+            "lcd"
+          ]
+        },
+        {
+          "row": 18,
+          "label": "Baterai Rusak",
+          "terms": [
+            "baterai"
+          ]
+        },
+        {
+          "row": 20,
+          "label": "Backdoor Rusak",
+          "terms": [
+            "backdoor"
+          ]
+        },
+        {
+          "row": 21,
+          "label": "Speaker Rusak",
+          "terms": [
+            "speaker"
+          ]
+        },
+        {
+          "row": 22,
+          "label": "Housing Rusak",
+          "terms": [
+            "housing"
+          ]
+        },
+        {
+          "row": 23,
+          "label": "Tombol Rusak",
+          "terms": [
+            "tombol"
+          ]
+        },
+        {
+          "row": 24,
+          "label": "Baterai Rusak",
+          "terms": [
+            "baterai"
+          ]
+        },
+        {
+          "row": 26,
+          "label": "Baterai Rusak",
+          "terms": [
+            "baterai"
+          ]
+        },
+        {
+          "row": 29,
+          "label": "LCD Rusak",
+          "terms": [
+            "lcd"
+          ]
+        },
+        {
+          "row": 30,
+          "label": "Kamera Rusak",
+          "terms": [
+            "kamera"
+          ]
+        },
+        {
+          "row": 31,
+          "label": "Baterai Rusak",
+          "terms": [
+            "baterai"
+          ]
+        },
+        {
+          "row": 33,
+          "label": "Baterai Rusak",
+          "terms": [
+            "baterai"
+          ]
+        },
+        {
+          "row": 36,
+          "label": "LCD Rusak",
+          "terms": [
+            "lcd"
+          ]
+        },
+        {
+          "row": 37,
+          "label": "Speaker Rusak",
+          "terms": [
+            "speaker"
+          ]
+        },
+        {
+          "row": 38,
+          "label": "LCD Rusak",
+          "terms": [
+            "lcd"
+          ]
+        },
+        {
+          "row": 39,
+          "label": "IC Power Rusak",
+          "terms": [
+            "cpu"
+          ]
+        },
+        {
+          "row": 40,
+          "label": "LCD Rusak",
+          "terms": [
+            "lcd"
+          ]
+        },
+        {
+          "row": 41,
+          "label": "Baterai Rusak",
+          "terms": [
+            "baterai"
+          ]
+        },
+        {
+          "row": 43,
+          "label": "IC Power Rusak",
+          "terms": [
+            "vcc main"
+          ]
+        },
+        {
+          "row": 44,
+          "label": "LCD Rusak",
+          "terms": [
+            "lcd"
+          ]
+        },
+        {
+          "row": 45,
+          "label": "Kamera Rusak",
+          "terms": [
+            "kamera"
+          ]
+        },
+        {
+          "row": 46,
+          "label": "Tombol Rusak",
+          "terms": [
+            "tombol"
+          ]
+        },
+        {
+          "row": 48,
+          "label": "Tombol Rusak",
+          "terms": [
+            "tombol"
+          ]
+        },
+        {
+          "row": 49,
+          "label": "Tombol Rusak",
+          "terms": [
+            "tombol"
+          ]
+        },
+        {
+          "row": 52,
+          "label": "Baterai Rusak",
+          "terms": [
+            "baterai"
+          ]
+        },
+        {
+          "row": 53,
+          "label": "Backdoor Rusak",
+          "terms": [
+            "backdoor"
+          ]
+        },
+        {
+          "row": 54,
+          "label": "LCD Rusak",
+          "terms": [
+            "lcd"
+          ]
+        },
+        {
+          "row": 55,
+          "label": "Housing Rusak",
+          "terms": [
+            "housing"
+          ]
+        },
+        {
+          "row": 57,
+          "label": "LCD Rusak",
+          "terms": [
+            "lcd"
+          ]
+        },
+        {
+          "row": 59,
+          "label": "LCD Rusak",
+          "terms": [
+            "screen"
+          ]
+        },
+        {
+          "row": 60,
+          "label": "LCD Rusak",
+          "terms": [
+            "lcd"
+          ]
+        },
+        {
+          "row": 62,
+          "label": "Baterai Rusak",
+          "terms": [
+            "baterai"
+          ]
+        },
+        {
+          "row": 63,
+          "label": "Backdoor Rusak",
+          "terms": [
+            "backdoor"
+          ]
+        },
+        {
+          "row": 65,
+          "label": "LCD Rusak",
+          "terms": [
+            "lcd"
+          ]
+        }
+      ],
+      "warning": "Kemunculan istilah komponen tidak selalu leakage; verifikasi terhadap catatan gejala asli wajib dilakukan."
+    }
+  },
+  "baseline_ds": {
+    "accuracy": 0.8324324324324325,
+    "macro_precision": 0.6162268834966204,
+    "macro_recall": 0.6490697098511536,
+    "macro_f1": 0.619447552079483,
+    "weighted_precision": 0.8422232459732459,
+    "weighted_recall": 0.8324324324324325,
+    "weighted_f1": 0.8310335566231466,
+    "multiclass_brier": 0.3921528218153194,
+    "classification_report": {
+      "Antena Signal Rusak": {
+        "precision": 0.5,
+        "recall": 0.25,
+        "f1-score": 0.3333333333333333,
+        "support": 4.0
+      },
+      "Backdoor Rusak": {
+        "precision": 0.8666666666666667,
+        "recall": 1.0,
+        "f1-score": 0.9285714285714286,
+        "support": 13.0
+      },
+      "Baterai Rusak": {
+        "precision": 0.96875,
+        "recall": 0.8857142857142857,
+        "f1-score": 0.9253731343283582,
+        "support": 35.0
+      },
+      "Housing Rusak": {
+        "precision": 0.8,
+        "recall": 0.6666666666666666,
+        "f1-score": 0.7272727272727273,
+        "support": 6.0
+      },
+      "IC Audio Rusak": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "IC Cas Rusak": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "IC Power Rusak": {
+        "precision": 0.5263157894736842,
+        "recall": 0.625,
+        "f1-score": 0.5714285714285714,
+        "support": 16.0
+      },
+      "IC WTR Rusak": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "Kamera Rusak": {
+        "precision": 0.8888888888888888,
+        "recall": 1.0,
+        "f1-score": 0.9411764705882353,
+        "support": 8.0
+      },
+      "LCD Rusak": {
+        "precision": 0.8947368421052632,
+        "recall": 0.8360655737704918,
+        "f1-score": 0.864406779661017,
+        "support": 61.0
+      },
+      "Mikrofon Rusak": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "f1-score": 0.6666666666666666,
+        "support": 1.0
+      },
+      "Port Pengisian Rusak": {
+        "precision": 1.0,
+        "recall": 0.8235294117647058,
+        "f1-score": 0.9032258064516129,
+        "support": 17.0
+      },
+      "Speaker Rusak": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 6.0
+      },
+      "Tombol Rusak": {
+        "precision": 0.6818181818181818,
+        "recall": 1.0,
+        "f1-score": 0.8108108108108109,
+        "support": 15.0
+      },
+      "accuracy": 0.8324324324324325,
+      "macro avg": {
+        "precision": 0.6162268834966204,
+        "recall": 0.6490697098511536,
+        "f1-score": 0.619447552079483,
+        "support": 185.0
+      },
+      "weighted avg": {
+        "precision": 0.8422232459732459,
+        "recall": 0.8324324324324325,
+        "f1-score": 0.8310335566231466,
+        "support": 185.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        13,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        31,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        2
+      ],
+      [
+        0,
+        2,
+        0,
+        4,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        10,
+        0,
+        1,
+        2,
+        0,
+        0,
+        0,
+        2
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        7,
+        0,
+        0,
+        51,
+        0,
+        0,
+        0,
+        2
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        14,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        6,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        15
+      ]
+    ]
+  },
+  "ds_pso_summary": {
+    "accuracy": {
+      "mean": 0.867027027027027,
+      "std": 0.004558238068711171
+    },
+    "macro_f1": {
+      "mean": 0.6558796059224404,
+      "std": 0.012326908600171677
+    },
+    "weighted_f1": {
+      "mean": 0.8612346301243671,
+      "std": 0.0037557808166788034
+    },
+    "multiclass_brier": {
+      "mean": 0.29596276774043684,
+      "std": 0.0038121295713489513
+    }
+  },
+  "runs": [
+    {
+      "seed": 42,
+      "train_fitness": 0.7303476846079537,
+      "metrics": {
+        "accuracy": 0.8594594594594595,
+        "macro_f1": 0.6326084682885013,
+        "weighted_f1": 0.8547065608638499,
+        "multiclass_brier": 0.2988695740349853
+      }
+    },
+    {
+      "seed": 43,
+      "train_fitness": 0.7331371507682896,
+      "metrics": {
+        "accuracy": 0.8702702702702703,
+        "macro_f1": 0.662370373050406,
+        "weighted_f1": 0.8637155698728589,
+        "multiclass_brier": 0.2940037283901703
+      }
+    },
+    {
+      "seed": 44,
+      "train_fitness": 0.7322797644526811,
+      "metrics": {
+        "accuracy": 0.8648648648648649,
+        "macro_f1": 0.6597068076242356,
+        "weighted_f1": 0.8603542253350439,
+        "multiclass_brier": 0.3001979910348142
+      }
+    },
+    {
+      "seed": 45,
+      "train_fitness": 0.7331254107882055,
+      "metrics": {
+        "accuracy": 0.8702702702702703,
+        "macro_f1": 0.662370373050406,
+        "weighted_f1": 0.8637155698728589,
+        "multiclass_brier": 0.29282135871293447
+      }
+    },
+    {
+      "seed": 46,
+      "train_fitness": 0.7287130239998012,
+      "metrics": {
+        "accuracy": 0.8594594594594595,
+        "macro_f1": 0.6326084682885013,
+        "weighted_f1": 0.8547065608638499,
+        "multiclass_brier": 0.30020313278650473
+      }
+    },
+    {
+      "seed": 47,
+      "train_fitness": 0.7288380937429404,
+      "metrics": {
+        "accuracy": 0.8648648648648649,
+        "macro_f1": 0.6592021702854289,
+        "weighted_f1": 0.859879475714184,
+        "multiclass_brier": 0.29885394815921024
+      }
+    },
+    {
+      "seed": 48,
+      "train_fitness": 0.7318058480183225,
+      "metrics": {
+        "accuracy": 0.8702702702702703,
+        "macro_f1": 0.6628182794857074,
+        "weighted_f1": 0.8641216291024476,
+        "multiclass_brier": 0.292645155122482
+      }
+    },
+    {
+      "seed": 49,
+      "train_fitness": 0.7309484230131551,
+      "metrics": {
+        "accuracy": 0.8702702702702703,
+        "macro_f1": 0.662370373050406,
+        "weighted_f1": 0.8637155698728589,
+        "multiclass_brier": 0.2992308669289042
+      }
+    },
+    {
+      "seed": 50,
+      "train_fitness": 0.7331898840447915,
+      "metrics": {
+        "accuracy": 0.8702702702702703,
+        "macro_f1": 0.662370373050406,
+        "weighted_f1": 0.8637155698728589,
+        "multiclass_brier": 0.29212596343279956
+      }
+    },
+    {
+      "seed": 51,
+      "train_fitness": 0.7299296075404196,
+      "metrics": {
+        "accuracy": 0.8702702702702703,
+        "macro_f1": 0.662370373050406,
+        "weighted_f1": 0.8637155698728589,
+        "multiclass_brier": 0.2906759588015629
+      }
+    }
+  ],
+  "best_run": {
+    "seed": 48,
+    "train_fitness": 0.7318058480183225,
+    "metrics": {
+      "accuracy": 0.8702702702702703,
+      "macro_precision": 0.6465827038516864,
+      "macro_recall": 0.6954092292654767,
+      "macro_f1": 0.6628182794857074,
+      "weighted_precision": 0.8632370062248845,
+      "weighted_recall": 0.8702702702702703,
+      "weighted_f1": 0.8641216291024476,
+      "multiclass_brier": 0.292645155122482,
+      "classification_report": {
+        "Antena Signal Rusak": {
+          "precision": 0.75,
+          "recall": 0.75,
+          "f1-score": 0.75,
+          "support": 4.0
+        },
+        "Backdoor Rusak": {
+          "precision": 0.8666666666666667,
+          "recall": 1.0,
+          "f1-score": 0.9285714285714286,
+          "support": 13.0
+        },
+        "Baterai Rusak": {
+          "precision": 0.9705882352941176,
+          "recall": 0.9428571428571428,
+          "f1-score": 0.9565217391304348,
+          "support": 35.0
+        },
+        "Housing Rusak": {
+          "precision": 0.8,
+          "recall": 0.6666666666666666,
+          "f1-score": 0.7272727272727273,
+          "support": 6.0
+        },
+        "IC Audio Rusak": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 1.0
+        },
+        "IC Cas Rusak": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 1.0
+        },
+        "IC Power Rusak": {
+          "precision": 0.5882352941176471,
+          "recall": 0.625,
+          "f1-score": 0.6060606060606061,
+          "support": 16.0
+        },
+        "IC WTR Rusak": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 1.0
+        },
+        "Kamera Rusak": {
+          "precision": 0.8888888888888888,
+          "recall": 1.0,
+          "f1-score": 0.9411764705882353,
+          "support": 8.0
+        },
+        "LCD Rusak": {
+          "precision": 0.8983050847457628,
+          "recall": 0.8688524590163934,
+          "f1-score": 0.8833333333333333,
+          "support": 61.0
+        },
+        "Mikrofon Rusak": {
+          "precision": 0.5,
+          "recall": 1.0,
+          "f1-score": 0.6666666666666666,
+          "support": 1.0
+        },
+        "Port Pengisian Rusak": {
+          "precision": 1.0,
+          "recall": 0.8823529411764706,
+          "f1-score": 0.9375,
+          "support": 17.0
+        },
+        "Speaker Rusak": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 6.0
+        },
+        "Tombol Rusak": {
+          "precision": 0.7894736842105263,
+          "recall": 1.0,
+          "f1-score": 0.8823529411764706,
+          "support": 15.0
+        },
+        "accuracy": 0.8702702702702703,
+        "macro avg": {
+          "precision": 0.6465827038516864,
+          "recall": 0.6954092292654767,
+          "f1-score": 0.6628182794857074,
+          "support": 185.0
+        },
+        "weighted avg": {
+          "precision": 0.8632370062248845,
+          "recall": 0.8702702702702703,
+          "f1-score": 0.8641216291024476,
+          "support": 185.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          13,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          33,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          4,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          10,
+          0,
+          1,
+          2,
+          0,
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          8,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          5,
+          0,
+          0,
+          53,
+          0,
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          15,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          6,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          15
+        ]
+      ]
+    },
+    "beliefs": [
+      0.3812440558828498,
+      0.5687559441171501,
+      0.9422707064931817,
+      0.0,
+      0.95,
+      0.0,
+      0.0,
+      0.95,
+      0.8563134081867291,
+      0.0,
+      0.95,
+      0.95,
+      0.7146792903265674,
+      0.12294894625204615,
+      0.8223892989656191,
+      0.1276107010343808,
+      0.0,
+      0.95,
+      0.7968553399161851,
+      0.95,
+      0.0,
+      0.95,
+      0.0,
+      0.8466614960613237,
+      0.10333850393867626,
+      0.95,
+      0.95,
+      0.7656676317282142
+    ],
+    "history": [
+      0.6748029594196563,
+      0.6944931175571145,
+      0.716246740314618,
+      0.7215481533614202,
+      0.7215481533614202,
+      0.7230286757172679,
+      0.7261667631002249,
+      0.7274518326070102,
+      0.7274518326070102,
+      0.7287377851931773,
+      0.7287377851931773,
+      0.7287377851931773,
+      0.7289441347511673,
+      0.7289441347511673,
+      0.7290264293165603,
+      0.7290264293165603,
+      0.7290264293165603,
+      0.7293129245564408,
+      0.7293129245564408,
+      0.7293377745153802,
+      0.7293377745153802,
+      0.7293887842591433,
+      0.7293887842591433,
+      0.7294639663338265,
+      0.7294639663338265,
+      0.7294639663338265,
+      0.7294639663338265,
+      0.7294639663338265,
+      0.7294639663338265,
+      0.7294817651731621,
+      0.7297789993169644,
+      0.7297789993169644,
+      0.7297789993169644,
+      0.7299520305338734,
+      0.7299520305338734,
+      0.7299520305338734,
+      0.7300768470308184,
+      0.7301250740585111,
+      0.7301520059371818,
+      0.7301520059371818,
+      0.7301520059371818,
+      0.7301520059371818,
+      0.7302047227478927,
+      0.7302047227478927,
+      0.7302047227478927,
+      0.7305106208059102,
+      0.7305106208059102,
+      0.7305106208059102,
+      0.7305602399302549,
+      0.7306389768924731,
+      0.7306389768924731,
+      0.7306389768924731,
+      0.7307884266563502,
+      0.7308680852298581,
+      0.7308680852298581,
+      0.7308680852298581,
+      0.7310319259107799,
+      0.7312383867734613,
+      0.7312383867734613,
+      0.7312416481835886,
+      0.7312790353668783,
+      0.7313164416696201,
+      0.7313164416696201,
+      0.7313651618081503,
+      0.7315077289101906,
+      0.7315077289101906,
+      0.7315077289101906,
+      0.7315722470065358,
+      0.7315908754982163,
+      0.7315908754982163,
+      0.7315908754982163,
+      0.7315908754982163,
+      0.7315931994568077,
+      0.7315931994568077,
+      0.7316013678591707,
+      0.7316053664502281,
+      0.7316080550720528,
+      0.7316080550720528,
+      0.7316080550720528,
+      0.7316704153900802,
+      0.7317011758808927,
+      0.7317095878493587,
+      0.7317095878493587,
+      0.731745110781115,
+      0.7317777542943409,
+      0.7317789459532089,
+      0.7317789459532089,
+      0.731780121644005,
+      0.73178453049023,
+      0.73178453049023,
+      0.73178453049023,
+      0.7317857593237281,
+      0.7317857593237281,
+      0.7317877963287364,
+      0.7317918960651388,
+      0.7317978630248432,
+      0.7318014218751081,
+      0.7318034870272787,
+      0.7318038503620802,
+      0.7318058480183225,
+      0.7318058480183225
+    ]
+  }
+}

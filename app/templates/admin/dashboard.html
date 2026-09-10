@@ -1,0 +1,4 @@
+{% extends 'admin/base.html' %}{% block title %}Dashboard{% endblock %}{% block heading %}Dashboard{% endblock %}{% block content %}
+<div class="grid"><div class="card metric"><span>Total diagnosis</span><b>{{ stats.diagnoses }}</b></div><div class="card metric"><span>Hari ini</span><b>{{ stats.today }}</b></div><div class="card metric"><span>Menunggu verifikasi</span><b>{{ stats.pending }}</b></div><div class="card metric"><span>Terverifikasi</span><b>{{ stats.verified }}</b></div><div class="card metric"><span>Job aktif</span><b>{{ stats.jobs }}</b></div></div>
+<div class="card"><h2>Distribusi diagnosis</h2><table><tr><th>Kelas</th><th>Jumlah</th></tr>{% for row in stats.classes %}<tr><td>{{ row.top_diagnosis }}</td><td>{{ row.total }}</td></tr>{% else %}<tr><td colspan="2">Belum ada data.</td></tr>{% endfor %}</table></div>
+{% endblock %}

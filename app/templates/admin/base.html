@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{% block title %}Admin{% endblock %} · NST Repair</title>
+  <style>
+    :root{--blue:#2563eb;--navy:#0f172a;--muted:#64748b;--line:#e2e8f0;--bg:#f8fafc;--danger:#dc2626}
+    *{box-sizing:border-box}body{margin:0;font:14px Inter,system-ui,sans-serif;background:var(--bg);color:var(--navy)}
+    a{color:var(--blue);text-decoration:none}.layout{display:grid;grid-template-columns:230px 1fr;min-height:100vh}
+    aside{background:var(--navy);color:white;padding:24px 16px}.brand{font-size:18px;font-weight:800;margin-bottom:28px}
+    nav a{display:block;color:#cbd5e1;padding:10px 12px;border-radius:8px;margin:3px 0}nav a:hover{background:#1e293b;color:white}
+    main{padding:28px;min-width:0}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
+    h1{margin:0;font-size:26px}h2{font-size:18px}.card{background:white;border:1px solid var(--line);border-radius:12px;padding:18px;margin-bottom:18px;box-shadow:0 2px 8px #0f172a0a}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px}.metric b{display:block;font-size:26px;color:var(--blue)}
+    table{width:100%;border-collapse:collapse;background:white}th,td{padding:10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#f1f5f9}
+    input,select,textarea{width:100%;padding:9px;border:1px solid #cbd5e1;border-radius:7px;background:white}textarea{min-height:90px}
+    label{display:block;font-weight:600;margin:9px 0 5px}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    button,.btn{border:0;border-radius:7px;padding:9px 13px;background:var(--blue);color:white;cursor:pointer;display:inline-block}.btn.secondary{background:#475569}.btn.danger{background:var(--danger)}
+    .badge{display:inline-block;padding:3px 8px;border-radius:999px;background:#e2e8f0;font-size:12px}.verified{background:#dcfce7;color:#166534}.pending{background:#fef3c7;color:#92400e}.failed,.rejected{background:#fee2e2;color:#991b1b}.running,.queued{background:#dbeafe;color:#1d4ed8}
+    .flash{padding:11px;border-radius:8px;margin-bottom:12px;background:#dcfce7}.flash.error{background:#fee2e2;color:#991b1b}
+    pre{white-space:pre-wrap;overflow:auto;background:#0f172a;color:#e2e8f0;padding:16px;border-radius:8px;max-height:650px}
+    .muted{color:var(--muted)}.actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.inline{display:inline}.pagination{display:flex;gap:8px;margin-top:16px}
+    @media(max-width:800px){.layout{grid-template-columns:1fr}aside{padding:14px}nav{display:flex;overflow:auto}.form-grid{grid-template-columns:1fr}main{padding:16px}}
+  </style>
+</head>
+<body><div class="layout">
+  <aside><div class="brand">NST Repair Admin</div><nav>
+    <a href="{{ url_for('admin.dashboard') }}">Dashboard</a>
+    <a href="{{ url_for('admin.diagnoses') }}">Riwayat & Verifikasi</a>
+    {% if session.admin_role == 'admin' %}<a href="{{ url_for('admin.prices') }}">Harga Perbaikan</a><a href="{{ url_for('admin.training_page') }}">Dataset & Training</a><a href="{{ url_for('admin.models') }}">Model Registry</a>{% endif %}
+    <a href="/">Kembali ke Aplikasi</a>
+  </nav></aside>
+  <main><div class="top"><h1>{% block heading %}Admin{% endblock %}</h1><div class="actions"><span>{{ session.admin_username }} · {{ session.admin_role }}</span><form class="inline" method="post" action="{{ url_for('admin.logout') }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><button class="secondary">Keluar</button></form></div></div>
+  {% for category,message in get_flashed_messages(with_categories=true) %}<div class="flash {{ category }}">{{ message }}</div>{% endfor %}
+  {% block content %}{% endblock %}</main>
+</div></body></html>

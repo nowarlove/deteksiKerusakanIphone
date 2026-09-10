@@ -1,0 +1,44 @@
+# Ignore generated training and testing CSV datasets
+data/dataLatih/*.csv
+data/dataUji/*.csv
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Ignore runtime feedback log (data dinamis, bukan bagian model)
+data/feedback_log.json
+
+# Ignore temporary test/debug scripts
+app/test_*.py
+app/inspect_*.py
+app/add_*.py
+
+# Ignore local Graphify AI knowledge graph output
+graphify-out/
+.agents/
+
+# Ignore environment variables
+.env
+.env.local.mysql
+.venv/
+.tmp_matplotlib/
+.vercel/
+.vscode/
+
+# Artefak runtime admin/training; model hanya masuk Git setelah direview manual.
+data/staging/
+data/models/
+data/active_model.json
+reports/training_jobs/
+logs/
+
+# Dokumen referensi lokal tidak dipublikasikan ke repository.
+referensi/Skripsi_Muhammad Rinaldii.docx
